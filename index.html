@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>campanile Labs</title>
+    <style>
+        body { margin: 0; background: #000000; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; gap: 20px; }
+        canvas { border: 1px solid #000000; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="2560" height="1440"></canvas>
+    <!-- <div style="color: white; font-family: monospace; font-size: 12px; max-width: 600px; text-align: center;">
+        Click on the windows or door to navigate. Press 'D' to toggle debug overlay showing clickable regions.
+    </div> -->
+    <script type="module">
+        const CANVAS_WIDTH = 2560;
+        const CANVAS_HEIGHT = 1440;
+        const QUAD_WIDTH = 1920;
+        const QUAD_HEIGHT = 1080;
+        const SQUARE_SIZE = 16;  // Reduced from 20 to 16 (1.25x denser)
+        const BORDER_WIDTH = 1;
+        const COLS = Math.floor(QUAD_WIDTH / SQUARE_SIZE);
+        const ROWS = Math.floor(QUAD_HEIGHT / SQUARE_SIZE);
+        const TOTAL_SQUARES = COLS * ROWS;
+        const HOVER_BULGE = 8.0;      // pixels to bulge outward for hovered square
+        const NEIGHBOR_BULGE = 6.0;   // pixels for immediate neighbors
+        const NEIGHBOR2_MIDDLE_BULGE = 3.0; // pixels for middle squares of outer ring edges
+        const NEIGHBOR2_REST_BULGE = 1.5;   // pixels for other outer ring squares
+
+        const gridShaderCode = `
+            struct VertexOutput {
+                @builtin(position) position: vec4f,
+                @location(0) uv: vec2f,
+            }
+
+            @group(0) @binding(0) var texSampler: sampler;
+            @group(0) @binding(1) var tex: texture_2d<f32>;
+
+            @vertex
+            fn vs_main(@location(0) pos: vec2f, @location(1) uv: vec2f) -> VertexOutput {
+                var out: VertexOutput;
+                out.position = vec4f(pos, 0.0, 1.0);
+                out.uv = uv;
+                return out;
+            }
+
+            @fragment
+            fn fs_main(in: VertexOutput) -> @location(0) vec4f {
+                return textureSample(tex, texSampler, in.uv);
+            }
+        `;
+
+        function pixelToNDC(px, py) {
+            const ndcX = (px / CANVAS_WIDTH) * 2.0 - 1.0;
+            const ndcY = 1.0 - (py / CANVAS_HEIGHT) * 2.0;
+            return [ndcX, ndcY];
+        }
+
+        const offsetX = (CANVAS_WIDTH - COLS * SQUARE_SIZE) / 2;
+        const offsetY = (CANVAS_HEIGHT - ROWS * SQUARE_SIZE) / 2;
+        const halfBorder = BORDER_WIDTH / 2;
+
+        function generateGridVertices(hoveredIndex = -1) {
+            const vertices = [];
+            const indices = [];
+
+            const getNeighborsAtDistance = (idx, distance) => {
+                if (idx < 0) return new Set();
+                const row = Math.floor(idx / COLS);
+                const col = idx % COLS;
+                const neighbors = new Set();
+                
+                for (let dr = -distance; dr <= distance; dr++) {
+                    for (let dc = -distance; dc <= distance; dc++) {
+                        if (Math.max(Math.abs(dr), Math.abs(dc)) !== distance) continue;
+                        const nr = row + dr;
+                        const nc = col + dc;
+                        if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+                            neighbors.add(nr * COLS + nc);
+                        }
+                    }
+                }
+                return neighbors;
+            };
+
+            const neighbor1Set = getNeighborsAtDistance(hoveredIndex, 1);
+            const neighbor2Set = getNeighborsAtDistance(hoveredIndex, 2);
+            
+            // Identify the middle squares of each edge of the outer ring (distance 2)
+            const neighbor2MiddleSet = new Set();
+            if (hoveredIndex >= 0) {
+                const hRow = Math.floor(hoveredIndex / COLS);
+                const hCol = hoveredIndex % COLS;
+                
+                // Middle of top row (row offset -2, col offset 0)
+                // Middle of bottom row (row offset +2, col offset 0)
+                // Middle of left column (row offset 0, col offset -2)
+                // Middle of right column (row offset 0, col offset +2)
+                const middlePositions = [
+                    { dr: -2, dc: 0 },  // middle of first row (top)
+                    { dr: 2, dc: 0 },   // middle of last row (bottom)
+                    { dr: 0, dc: -2 },  // middle of first column (left)
+                    { dr: 0, dc: 2 },   // middle of last column (right)
+                ];
+                
+                for (const { dr, dc } of middlePositions) {
+                    const nr = hRow + dr;
+                    const nc = hCol + dc;
+                    if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+                        neighbor2MiddleSet.add(nr * COLS + nc);
+                    }
+                }
+            }
+
+            // Get hovered square position for bulge direction calculation
+            let hoveredRow = -1, hoveredCol = -1;
+            if (hoveredIndex >= 0) {
+                hoveredRow = Math.floor(hoveredIndex / COLS);
+                hoveredCol = hoveredIndex % COLS;
+            }
+
+            for (let row = 0; row < ROWS; row++) {
+                for (let col = 0; col < COLS; col++) {
+                    const squareIndex = row * COLS + col;
+                    const vertexIndex = vertices.length / 4;
+
+                    let x0 = offsetX + col * SQUARE_SIZE + halfBorder;
+                    let y0 = offsetY + row * SQUARE_SIZE + halfBorder;
+                    let x1 = offsetX + (col + 1) * SQUARE_SIZE - halfBorder;
+                    let y1 = offsetY + (row + 1) * SQUARE_SIZE - halfBorder;
+
+                    let bulgeAmount = 0;
+                    if (squareIndex === hoveredIndex) {
+                        bulgeAmount = HOVER_BULGE;
+                    } else if (neighbor1Set.has(squareIndex)) {
+                        bulgeAmount = NEIGHBOR_BULGE;
+                    } else if (neighbor2Set.has(squareIndex)) {
+                        if (neighbor2MiddleSet.has(squareIndex)) {
+                            bulgeAmount = NEIGHBOR2_MIDDLE_BULGE;
+                        } else {
+                            bulgeAmount = NEIGHBOR2_REST_BULGE;
+                        }
+                    }
+
+                    if (bulgeAmount > 0) {
+                        // Calculate direction from hovered square to this square
+                        const centerX = (x0 + x1) / 2;
+                        const centerY = (y0 + y1) / 2;
+                        
+                        const hoveredCenterX = offsetX + hoveredCol * SQUARE_SIZE + SQUARE_SIZE / 2;
+                        const hoveredCenterY = offsetY + hoveredRow * SQUARE_SIZE + SQUARE_SIZE / 2;
+                        
+                        let dx = centerX - hoveredCenterX;
+                        let dy = centerY - hoveredCenterY;
+                        
+                        // Normalize direction (handle center square case)
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist > 0.001) {
+                            dx /= dist;
+                            dy /= dist;
+                        } else {
+                            // For the hovered square itself, no directional displacement
+                            dx = 0;
+                            dy = 0;
+                        }
+                        
+                        // Apply bulge displacement
+                        const displaceX = dx * bulgeAmount;
+                        const displaceY = dy * bulgeAmount;
+                        
+                        x0 += displaceX;
+                        x1 += displaceX;
+                        y0 += displaceY;
+                        y1 += displaceY;
+                    }
+
+                    const [ndcX0, ndcY0] = pixelToNDC(x0, y0);
+                    const [ndcX1, ndcY1] = pixelToNDC(x1, y1);
+
+                    const u0 = col / COLS;
+                    const v0 = row / ROWS;
+                    const u1 = (col + 1) / COLS;
+                    const v1 = (row + 1) / ROWS;
+
+                    vertices.push(
+                        ndcX0, ndcY0, u0, v0,
+                        ndcX1, ndcY0, u1, v0,
+                        ndcX0, ndcY1, u0, v1,
+                        ndcX1, ndcY1, u1, v1
+                    );
+
+                    indices.push(
+                        vertexIndex + 0, vertexIndex + 1, vertexIndex + 2,
+                        vertexIndex + 2, vertexIndex + 1, vertexIndex + 3
+                    );
+                }
+            }
+
+            return {
+                vertices: new Float32Array(vertices),
+                indices: new Uint32Array(indices)
+            };
+        }
+
+        function getHoveredSquare(mouseX, mouseY) {
+            const gridX = mouseX - offsetX;
+            const gridY = mouseY - offsetY;
+
+            if (gridX < 0 || gridX >= COLS * SQUARE_SIZE || gridY < 0 || gridY >= ROWS * SQUARE_SIZE) {
+                return -1;
+            }
+
+            const col = Math.floor(gridX / SQUARE_SIZE);
+            const row = Math.floor(gridY / SQUARE_SIZE);
+
+            const localX = gridX - col * SQUARE_SIZE;
+            const localY = gridY - row * SQUARE_SIZE;
+
+            if (localX < halfBorder || localX > SQUARE_SIZE - halfBorder ||
+                localY < halfBorder || localY > SQUARE_SIZE - halfBorder) {
+                return -1;
+            }
+
+            return row * COLS + col;
+        }
+
+        let device, context, format, gridPipeline, gridVertexBuffer, gridIndexBuffer, sampler, indexCount;
+        let currentTexture = null;
+        let hoveredSquare = -1;
+        let showDebugOverlay = false;
+        
+        // Clickable regions (normalized coordinates 0-1 relative to texture)
+        // The campanile is on the right side of the image (roughly x: 0.55-0.95)
+        const clickableRegions = [
+            // "campanile Labs" lettering on the left side of the image
+            { name: 'campanile Labs', x: 0.18, y: 0.50, width: 0.28, height: 0.18, url: 'main.html' },
+
+            // Main entrance door (large arched entrance at bottom center of tower)
+            { name: 'Main Entrance', x: 0.715, y: 0.84, width: 0.12, height: 0.16, url: 'main.html' },
+
+        ];
+
+        async function init() {
+            if (!navigator.gpu) {
+                document.body.innerHTML = '<p style="color:white;font-size:24px;">WebGPU not supported</p>';
+                return;
+            }
+
+            const adapter = await navigator.gpu.requestAdapter();
+            if (!adapter) {
+                document.body.innerHTML = '<p style="color:white;font-size:24px;">No GPU adapter found</p>';
+                return;
+            }
+
+            device = await adapter.requestDevice();
+            const canvas = document.getElementById('canvas');
+            context = canvas.getContext('webgpu');
+
+            format = navigator.gpu.getPreferredCanvasFormat();
+            context.configure({ device, format, alphaMode: 'premultiplied' });
+
+            sampler = device.createSampler({
+                magFilter: 'linear',
+                minFilter: 'linear',
+            });
+
+            const grid = generateGridVertices();
+            indexCount = grid.indices.length;
+
+            gridVertexBuffer = device.createBuffer({
+                size: grid.vertices.byteLength,
+                usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+            });
+            device.queue.writeBuffer(gridVertexBuffer, 0, grid.vertices);
+
+            gridIndexBuffer = device.createBuffer({
+                size: grid.indices.byteLength,
+                usage: GPUBufferUsage.INDEX | GPUBufferUsage.COPY_DST,
+            });
+            device.queue.writeBuffer(gridIndexBuffer, 0, grid.indices);
+
+            const gridShaderModule = device.createShaderModule({ code: gridShaderCode });
+
+            gridPipeline = device.createRenderPipeline({
+                layout: 'auto',
+                vertex: {
+                    module: gridShaderModule,
+                    entryPoint: 'vs_main',
+                    buffers: [{
+                        arrayStride: 4 * 4,
+                        attributes: [
+                            { shaderLocation: 0, offset: 0, format: 'float32x2' },
+                            { shaderLocation: 1, offset: 8, format: 'float32x2' },
+                        ],
+                    }],
+                },
+                fragment: {
+                    module: gridShaderModule,
+                    entryPoint: 'fs_main',
+                    targets: [{ format }],
+                },
+                primitive: { topology: 'triangle-list' },
+            });
+
+            canvas.addEventListener('mousemove', onMouseMove);
+            canvas.addEventListener('mouseleave', onMouseLeave);
+            canvas.addEventListener('click', onMouseClick);
+            canvas.style.cursor = 'default';
+            
+            // Debug overlay toggle
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'd' || e.key === 'D') {
+                    showDebugOverlay = !showDebugOverlay;
+                    render(currentTexture);
+                }
+            });
+
+            // Load texture from img/campanileLabs.png
+            await loadTextureFromURL('img/campanileLabs.png');
+            console.log(`Dense grid ready: ${COLS}x${ROWS} = ${TOTAL_SQUARES} squares`);
+        }
+
+        function onMouseMove(e) {
+            const canvas = e.target;
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const mouseX = (e.clientX - rect.left) * scaleX;
+            const mouseY = (e.clientY - rect.top) * scaleY;
+
+            const newHovered = getHoveredSquare(mouseX, mouseY);
+            if (newHovered !== hoveredSquare) {
+                hoveredSquare = newHovered;
+                updateVertices();
+                render(currentTexture);
+            }
+            
+            // Check if mouse is over a clickable region
+            const clickedRegion = getClickedRegion(mouseX, mouseY);
+            canvas.style.cursor = clickedRegion ? 'pointer' : 'default';
+        }
+
+        function onMouseLeave() {
+            if (hoveredSquare !== -1) {
+                hoveredSquare = -1;
+                updateVertices();
+                render(currentTexture);
+            }
+        }
+        
+        function onMouseClick(e) {
+            const canvas = e.target;
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const mouseX = (e.clientX - rect.left) * scaleX;
+            const mouseY = (e.clientY - rect.top) * scaleY;
+            
+            const clickedRegion = getClickedRegion(mouseX, mouseY);
+            if (clickedRegion) {
+                console.log(`Clicked on ${clickedRegion.name}, navigating to ${clickedRegion.url}`);
+                window.location.href = clickedRegion.url;
+            }
+        }
+        
+        function getClickedRegion(mouseX, mouseY) {
+            // Convert mouse coordinates to texture space (0-1)
+            const gridX = mouseX - offsetX;
+            const gridY = mouseY - offsetY;
+            const texX = gridX / (COLS * SQUARE_SIZE);
+            const texY = gridY / (ROWS * SQUARE_SIZE);
+            
+            // Check each clickable region
+            for (const region of clickableRegions) {
+                const minX = region.x - region.width / 2;
+                const maxX = region.x + region.width / 2;
+                const minY = region.y - region.height / 2;
+                const maxY = region.y + region.height / 2;
+                
+                if (texX >= minX && texX <= maxX && texY >= minY && texY <= maxY) {
+                    return region;
+                }
+            }
+            
+            return null;
+        }
+
+        function updateVertices() {
+            const grid = generateGridVertices(hoveredSquare);
+            device.queue.writeBuffer(gridVertexBuffer, 0, grid.vertices);
+        }
+
+        async function loadTextureFromURL(url) {
+            try {
+                const response = await fetch(url);
+                const blob = await response.blob();
+                const img = new Image();
+                img.src = URL.createObjectURL(blob);
+                await img.decode();
+
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const imageData = ctx.getImageData(0, 0, img.width, img.height);
+
+                const texture = device.createTexture({
+                    size: [img.width, img.height],
+                    format: 'rgba8unorm',
+                    usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
+                });
+
+                device.queue.writeTexture(
+                    { texture },
+                    imageData.data,
+                    { bytesPerRow: img.width * 4 },
+                    [img.width, img.height]
+                );
+
+                URL.revokeObjectURL(img.src);
+
+                currentTexture = texture;
+                console.log(`Loaded texture from ${url}: ${img.width}x${img.height}`);
+                render(texture);
+            } catch (error) {
+                console.error(`Failed to load texture from ${url}:`, error);
+                // Fall back to default gradient texture
+                await loadDefaultTexture();
+            }
+        }
+
+        async function loadDefaultTexture() {
+            const width = COLS * SQUARE_SIZE;
+            const height = ROWS * SQUARE_SIZE;
+            const data = new Uint8Array(width * height * 4);
+
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const i = (y * width + x) * 4;
+                    data[i + 0] = Math.floor((x / width) * 255);
+                    data[i + 1] = Math.floor((y / height) * 255);
+                    data[i + 2] = 128;
+                    data[i + 3] = 255;
+                }
+            }
+
+            const texture = device.createTexture({
+                size: [width, height],
+                format: 'rgba8unorm',
+                usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
+            });
+
+            device.queue.writeTexture(
+                { texture },
+                data,
+                { bytesPerRow: width * 4 },
+                [width, height]
+            );
+
+            currentTexture = texture;
+            render(texture);
+        }
+
+        function render(texture) {
+            if (!texture) return;
+
+            const bindGroup = device.createBindGroup({
+                layout: gridPipeline.getBindGroupLayout(0),
+                entries: [
+                    { binding: 0, resource: sampler },
+                    { binding: 1, resource: texture.createView() },
+                ],
+            });
+
+            const commandEncoder = device.createCommandEncoder();
+
+            const renderPass = commandEncoder.beginRenderPass({
+                colorAttachments: [{
+                    view: context.getCurrentTexture().createView(),
+                    clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+                    loadOp: 'clear',
+                    storeOp: 'store',
+                }],
+            });
+
+            renderPass.setPipeline(gridPipeline);
+            renderPass.setBindGroup(0, bindGroup);
+            renderPass.setVertexBuffer(0, gridVertexBuffer);
+            renderPass.setIndexBuffer(gridIndexBuffer, 'uint32');
+            renderPass.drawIndexed(indexCount);
+            renderPass.end();
+
+            device.queue.submit([commandEncoder.finish()]);
+            
+            // Draw debug overlay if enabled
+            if (showDebugOverlay) {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d', { alpha: true });
+                
+                clickableRegions.forEach(region => {
+                    const centerX = offsetX + region.x * (COLS * SQUARE_SIZE);
+                    const centerY = offsetY + region.y * (ROWS * SQUARE_SIZE);
+                    const w = region.width * (COLS * SQUARE_SIZE);
+                    const h = region.height * (ROWS * SQUARE_SIZE);
+                    
+                    ctx.strokeStyle = 'rgba(255, 0, 0, 0.8)';
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(centerX - w/2, centerY - h/2, w, h);
+                    
+                    ctx.fillStyle = 'rgba(255, 0, 0, 0.2)';
+                    ctx.fillRect(centerX - w/2, centerY - h/2, w, h);
+                    
+                    ctx.fillStyle = 'white';
+                    ctx.font = '14px monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(region.name, centerX, centerY);
+                });
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>

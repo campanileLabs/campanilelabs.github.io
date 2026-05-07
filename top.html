@@ -1,0 +1,94 @@
+<style>
+    .div_top {
+        color: white;
+        background-color: #f31010;
+        /* border: 5px solid #333; */
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .div_top_menu {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+    }
+    .div_top_menu li {
+        background: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        font-size: 16px;
+        position: relative;
+    }
+    .div_top_menu li a {
+        color: white;
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background 0.2s;
+        display: block;
+    }
+    .div_top_menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Dropdown */
+    .div_top_menu li .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #c20d0d;
+        border-radius: 8px;
+        min-width: 160px;
+        /* box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); */
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+        z-index: 100;
+    }
+    .div_top_menu li:hover .dropdown {
+        display: block;
+    }
+    .div_top_menu li .dropdown li {
+        font-size: 15px;
+        width: 100%;
+    }
+    .div_top_menu li .dropdown li a {
+        border-radius: 0;
+        padding: 8px 16px;
+        white-space: nowrap;
+    }
+    .div_top_menu li .dropdown li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+
+<div class="div_top">
+    <a href="main.html" style="color:white;text-decoration:none;">campanile Labs</a>
+    <ul class="div_top_menu">
+        <li> 
+            <a href="javascript:void(0)" data-middle="apps.html">Apps</a>
+            <ul class="dropdown">
+                <li><a href="javascript:void(0)" data-middle="apps/audioforma.html">Audioforma</a></li>
+                <li><a href="javascript:void(0)" data-middle="apps/sonidorealplus.html">Sonido Real+</a></li>
+                <li><a href="javascript:void(0)" data-middle="apps/imagen.html">Imagen</a></li>
+                <li><a href="javascript:void(0)" data-middle="apps/trueveo.html">True Veo</a></li>
+                <li><a href="javascript:void(0)" data-middle="apps/revid.html">reVid</a></li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" data-middle="oss.html">Opensource</a></li>
+        <li><a href="javascript:void(0)" data-middle="blog.html">Blog</a></li>
+        <li><a href="javascript:void(0)" data-middle="about.html">About</a></li>
+    </ul>
+</div>
