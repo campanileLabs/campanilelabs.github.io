@@ -1,22 +1,340 @@
-<style>
-    .about {
-        padding: 32px;
-        font-family: Arial, sans-serif;
-    }
-    .about h1 {
-        font-size: 28px;
-        margin-bottom: 16px;
-        color: #a0a8ff;
-    }
-    .about p {
-        font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 16px;
-        color: #ccc;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WBLGCJ85');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMR75RR9');</script>
+    <!-- End Google Tag Manager -->
 
-<div class="about">
-    <h1>About</h1>
-    <p>Coming soon.</p>
-</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>About — campanile Labs</title>
+    <meta name="description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
+    <link rel="canonical" href="https://www.campanilelabs.com/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="campanile Labs">
+    <meta property="og:title" content="About — campanile Labs">
+    <meta property="og:description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
+    <meta property="og:url" content="https://www.campanilelabs.com/about.html">
+    <meta property="og:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — campanile Labs">
+    <meta name="twitter:description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
+    <meta name="twitter:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #faf7f0; }
+    .div_container {
+        display: grid;
+        grid-template-columns: clamp(0px, 15%, 200px) 1fr clamp(0px, 15%, 200px);
+        width: 100%;
+        min-height: 55vh;
+    }
+    .div_left, .div_right { width: 100%; }
+    .div_middle { width: 100%; }
+    h1 { font-size: 28px; color: #333; }
+    @media (max-width: 600px) {
+        body { margin: 10px; }
+        .div_container { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBLGCJ85"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMR75RR9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <style>
+        .div_top {
+            color: white;
+            background-color: #f31010;
+            margin: 50px 0 100px 0;
+            padding: 10px 40px;
+            font-size: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .div_top_brand {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 160px;
+        }
+        .div_top_logo {
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 93.5px;
+            height: 125px;
+            pointer-events: none;
+        }
+        .div_top_menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+        .div_top_menu li {
+            background: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 16px;
+            position: relative;
+        }
+        .div_top_menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            display: block;
+        }
+        .div_top_menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown */
+        .div_top_menu li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #c20d0d;
+            border-radius: 8px;
+            min-width: 160px;
+            list-style: none;
+            margin: 0;
+            padding: 6px 0;
+            z-index: 100;
+        }
+        .div_top_menu li:hover .dropdown {
+            display: block;
+        }
+        .div_top_menu li .dropdown li {
+            font-size: 15px;
+            width: 100%;
+        }
+        .div_top_menu li .dropdown li a {
+            border-radius: 0;
+            padding: 8px 16px;
+            white-space: nowrap;
+        }
+        .div_top_menu li .dropdown li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <header class="div_top">
+        <a href="/" class="div_top_brand">
+            <img src="/img/topbar_campanileLabs_wb.png" alt="campanile Labs" class="div_top_logo">
+            campanile Labs
+        </a>
+        <nav>
+        <ul class="div_top_menu">
+            <li>
+                <a href="/apps.html">Apps</a>
+                <ul class="dropdown">
+                    <li><a href="/apps/audioforma.html">Audioforma</a></li>
+                    <li><a href="/apps/sonidodiseno.html">sonido Diseno</a></li>
+                    <li><a href="/apps/imagen.html">Imagen</a></li>
+                    <li><a href="/apps/playfulVeo.html">playful Veo</a></li>
+                    <li><a href="/apps/revid.html">reVid</a></li>
+                </ul>
+            </li>
+            <li><a href="/oss.html">Opensource</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div class="div_container">
+        <div class="div_left"></div>
+        <main class="div_middle">
+            <style>
+                .about {
+                    background-color: #bbbbbb;
+                    width: 100%;
+                    color: #000000;
+                    border-radius: 15px;
+                    padding: 15px;
+                    box-sizing: border-box;
+                    font-size: 20px;
+                    line-height: 1.6;
+                }
+                .about .brand-red {
+                    color: #f31010;
+                    font-weight: bold;
+                }
+                .about .brand-white {
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+
+                .contact {
+                    background-color: #bbbbbb;
+                    width: 100%;
+                    color: #000000;
+                    border-radius: 15px;
+                    padding: 15px;
+                    box-sizing: border-box;
+                    font-size: 20px;
+                    line-height: 1.6;
+                }
+                .contact .brand-red {
+                    color: #f31010;
+                    font-weight: bold;
+                }
+                .contact .brand-white {
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+                .divider-red {
+                    border: none;
+                    border-top: 3px solid #f31010;
+                    margin: 24px 0;
+                }
+            </style>
+
+            <div class="about">
+                <p><strong>A multimedia software laboratory.</strong></p>
+                <p>
+                    <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> is a one-person experimental software lab based in California.
+                    I take open-source libraries and put them to work building feature-rich tools for images, 3D graphics, audio, and video.
+                </p>
+                <p>
+                    AI and large language models changed what one developer can ship. I use them to move fast &mdash; wiring libraries
+                    together, filling in reference, and doing the work that would normally take a team &mdash; then layer my own code, interface
+                    design, and artistic detail on top. Every app in the <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> Apps section was built this way.
+                </p>
+                <p>
+                    Education was the longest and hardest part of the journey, and earning a Bachelor's in Computer Science from
+                    San Diego State University was worth it. When I went looking for a name to publish my work under, nothing fit until
+                    <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> &mdash; a nod to my alma mater's bell tower, and a name that simply sounds right.
+                </p>
+                <p>
+                    Take a look around, try the apps, and pick up the ones you like. I think you will.
+                </p>
+                <p>
+                    Thank you,
+                </p>
+                <p>
+                    Edsel Malasig
+                </p>
+            </div>
+            <hr class="divider-red">
+            <div class="contact">
+                <p><strong>Contact</strong></p>
+                <p>
+        
+                </p>
+
+            </div>
+        </main>
+        <div class="div_right"></div>
+    </div>
+
+    <style>
+        .div_bottom {
+            color: white;
+            font-weight: bold;
+            background-color: #bd3417;
+            margin: 100px 0 50px 0;
+            padding: 10px 40px;
+            font-size: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .div_bottom_brand {
+            color: white;
+            font-weight: bold;
+            order: 1;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            padding-right: 160px;
+        }
+        .div_bottom_logo {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 93.5px;
+            height: 125px;
+            pointer-events: none;
+        }
+        .div_bottom_menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+        .div_bottom_menu li {
+            background: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 16px;
+        }
+        .div_bottom_menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .div_bottom_menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <footer class="div_bottom">
+        <nav>
+        <ul class="div_bottom_menu">
+            <li><a href="/apps.html">Apps</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/oss.html">Opensource</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+        </nav>
+        <span class="div_bottom_brand">
+            campanile Labs
+            <img src="/img/topbar_campanileLabs_wb.png" alt="campanile Labs" class="div_bottom_logo">
+        </span>
+    </footer>
+</body>
+</html>

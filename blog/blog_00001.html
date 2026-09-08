@@ -17,22 +17,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blog — campanile Labs</title>
-    <meta name="description" content="Notes from the workshop at campanile Labs: build logs and first looks at the apps and experiments, newest first.">
-    <link rel="canonical" href="https://www.campanilelabs.com/blog.html">
+    <title>A first look at the playful Veo interface — campanile Labs</title>
+    <meta name="description" content="Where playful Veo stands today: one drop target, seven real-time filters (mosaic, hex heat-map, chromatic glitch, halftone, shuffled tiles, edge trace) running live while a clip plays.">
+    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00001.html">
 
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="Blog — campanile Labs">
-    <meta property="og:description" content="Notes from the workshop at campanile Labs: build logs and first looks at the apps and experiments, newest first.">
-    <meta property="og:url" content="https://www.campanilelabs.com/blog.html">
-    <meta property="og:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta property="og:title" content="A first look at the playful Veo interface — campanile Labs">
+    <meta property="og:description" content="Where playful Veo stands today: one drop target, seven real-time filters (mosaic, hex heat-map, chromatic glitch, halftone, shuffled tiles, edge trace) running live while a clip plays.">
+    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00001.html">
+    <meta property="og:image" content="https://www.campanilelabs.com/media/playful-veo-screenshot-1.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blog — campanile Labs">
-    <meta name="twitter:description" content="Notes from the workshop at campanile Labs: build logs and first looks at the apps and experiments, newest first.">
-    <meta name="twitter:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta name="twitter:title" content="A first look at the playful Veo interface — campanile Labs">
+    <meta name="twitter:description" content="Where playful Veo stands today: one drop target, seven real-time filters (mosaic, hex heat-map, chromatic glitch, halftone, shuffled tiles, edge trace) running live while a clip plays.">
+    <meta name="twitter:image" content="https://www.campanilelabs.com/media/playful-veo-screenshot-1.png">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Blog","name":"campanile Labs Blog","url":"https://www.campanilelabs.com/blog.html","publisher":{"@type":"Organization","name":"campanile Labs"}}
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"A first look at the playful Veo interface","datePublished":"2026-09-07","dateModified":"2026-09-07","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://www.campanilelabs.com/media/playful-veo-screenshot-1.png","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00001.html"}
     </script>
     <style>
     body { font-family: Arial, sans-serif; margin: 20px; background-color: #faf7f0; }
@@ -180,65 +180,109 @@
         <div class="div_left"></div>
         <main class="div_middle">
             <style>
-                .blog { width: 100%; box-sizing: border-box; }
-                .blog > h1 { font-size: 28px; margin: 0 0 6px 0; color: #000000; }
-                .blog > .intro { font-size: 15px; color: #333333; margin: 0 0 18px 0; }
-                .blog_list {
+                .blogpost { width: 100%; box-sizing: border-box; }
+                .blogpost .post_card {
                     background-color: #bbbbbb; color: #000000; border-radius: 15px;
-                    padding: 8px 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 }
-                .blog_list_item {
-                    display: flex; align-items: center; gap: 14px;
-                    border-bottom: 1px solid #a8a8a8; padding: 14px 0;
-                }
-                .blog_list_item:last-child { border-bottom: none; }
-                .blog_list_item .thumb {
-                    flex: 0 0 auto; width: 120px; height: 72px;
-                    border-radius: 8px; overflow: hidden; background-color: #999999;
-                }
-                .blog_list_item .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
-                .blog_list_item .body { flex: 1; min-width: 0; }
-                .blog_list_item .date { display: block; font-size: 13px; color: #333333; margin-bottom: 4px; }
-                .blog_list_item a.title {
-                    font-size: 18px; font-weight: bold; color: #000000; text-decoration: none;
-                }
-                .blog_list_item a.title:hover { color: #f31010; }
-                .blog_list_item .tag {
+                .blogpost .tag {
                     display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
-                    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-                    padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle;
+                    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+                    padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
                 }
-                @media (max-width: 480px) {
-                    .blog_list_item { flex-direction: column; align-items: stretch; gap: 10px; }
-                    .blog_list_item .thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+                .blogpost .head {
+                    display: flex; align-items: baseline; justify-content: space-between;
+                    flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
                 }
+                .blogpost h2 { font-size: 22px; margin: 0; color: #000000; }
+                .blogpost .date { font-size: 14px; color: #333333; white-space: nowrap; }
+                .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #000000; }
+                .blogpost .media {
+                    width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 6px; background-color: #999999;
+                }
+                .blogpost .media img, .blogpost .media video {
+                    display: block; width: 100%; height: auto;
+                }
+                .blogpost .media audio { display: block; width: 100%; padding: 14px; box-sizing: border-box; background-color: #999999; }
+                .blogpost .caption { font-size: 13px; color: #333333; font-style: italic; margin: 6px 0 18px 0; }
+
+                /* pager is its own block, decoupled from the post card */
+                .blog_pager {
+                    width: 100%; box-sizing: border-box;
+                    background-color: #cfcfcf; color: #000000;
+                    border-radius: 15px; padding: 14px 16px; margin-top: 14px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+                .blog_pager .row {
+                    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+                }
+                .blog_pager .row a {
+                    background-color: #f31010; color: #ffffff; font-weight: bold; text-decoration: none;
+                    padding: 10px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap;
+                }
+                .blog_pager .row a:hover { background-color: #c20d0d; }
+                .blog_pager .row a.allposts { background-color: #7a7a7a; }
+                .blog_pager .row .slot { flex: 1; }
+                .blog_pager .row .slot.right { text-align: right; }
+                .blog_pager .row .slot.center { text-align: center; flex: 0 0 auto; }
             </style>
 
-            <div class="blog">
-                <h1>Blog</h1>
-                <!-- <p class="intro">Notes from the workshop &mdash; newest first.</p> -->
-                <div class="blog_list">
-                    <div class="blog_list_item">
-                        <span class="thumb">
-                            <img src="/media/playful-veo-screenshot-1.png" alt="playful Veo landing screen">
-                        </span>
-                        <span class="body">
-                            <span class="date">September 7, 2026</span>
-                            <a class="title" href="/blog/blog_00001.html">A first look at the playful Veo interface</a>
-                            <span class="tag">playful Veo</span>
-                        </span>
+            <div class="blogpost">
+                <article class="post_card">
+                    <span class="tag">playful Veo</span>
+                    <div class="head">
+                        <h2>A first look at the playful Veo interface</h2>
+                        <span class="date">September 7, 2026</span>
                     </div>
-                    <div class="blog_list_item">
-                        <span class="thumb">
-                            <img src="/media/one-yolo-coreml-1.jpg" alt="one-yolo-coreml six-channel detection grid">
-                        </span>
-                        <span class="body">
-                            <span class="date">September 7, 2026</span>
-                            <a class="title" href="/blog/blog_00002.html">one-yolo-coreml: fanning a single CoreML model across many feeds</a>
-                            <span class="tag">one-yolo-coreml</span>
-                        </span>
+
+                    <p>Here&#39;s where playful Veo stands today. The whole screen is one drop target &mdash; a stage curtain, a ring of comedy-and-tragedy masks, and a single <strong>Open Video File</strong> button. Drop a clip and it starts playing straight away.</p>
+                    <p>The point of the app is play: while a video runs you can throw a stack of real-time filters at it &mdash; mosaic, hex heat-map, chromatic glitch, halftone, shuffled-tile, edge trace &mdash; scrub around, and pull frames you like. Here&#39;s the full sweep, applied to <em>Poet Anderson: The Dream Walker</em>.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-1.png" alt="playful Veo landing screen: theatre curtain, a ring of comedy and tragedy masks, and an Open Video File button">
                     </div>
-                </div>
+                    <p class="caption">1 &mdash; The landing screen. The whole window is a drop zone.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-2.png" alt="playful Veo playing a video with a square mosaic / pixel-grid filter applied to the frame">
+                    </div>
+                    <p class="caption">2 &mdash; Pixelated edge effect, mid-playback at 5:08.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-3.png" alt="playful Veo frame rendered as a fiery hexagonal heat-map grid">
+                    </div>
+                    <p class="caption">3 &mdash; Hexagon effect &mdash; the frame resampled onto a honeycomb.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-4.png" alt="playful Veo frame with a chromatic-aberration VHS glitch filter">
+                    </div>
+                    <p class="caption">4 &mdash; VHS glitch effect, VHS-style colour split and scanlines.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-5.png" alt="playful Veo frame rendered as a blue halftone dot-matrix, a face emerging from the dots">
+                    </div>
+                    <p class="caption">5 &mdash; Pixelated circle effect &mdash; the image rebuilt from a dot grid.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-6.png" alt="playful Veo frame broken into offset shuffled tiles">
+                    </div>
+                    <p class="caption">6 &mdash; Shuffled tiles effect &mdash; the frame sliced and nudged out of alignment.</p>
+
+                    <div class="media">
+                        <img src="/media/playful-veo-screenshot-7.png" alt="playful Veo frame rendered as glowing neon edge-detection outlines over a dark cityscape">
+                    </div>
+                    <p class="caption">7 &mdash; Edge trace effect &mdash; everything reduced to glowing outlines.</p>
+
+                    <p>All seven run live at 100% speed, so you can flip between looks while the clip plays and grab whichever frame lands. More on the export path in the next post.</p>
+                </article>
+            </div>
+
+            <div class="blog_pager">
+                <nav class="row">
+                    <span class="slot">&nbsp;</span>
+                    <span class="slot center"><a href="/blog.html" class="allposts">All Posts</a></span>
+                    <span class="slot right"><a href="/blog/blog_00002.html">Older Post &rarr;</a></span>
+                </nav>
             </div>
         </main>
         <div class="div_right"></div>

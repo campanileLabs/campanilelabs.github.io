@@ -1,0 +1,285 @@
+<style>
+    .blog {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .blog > h1 {
+        font-size: 28px;
+        margin: 0 0 20px 0;
+        color: #000000;
+    }
+    .blog_post {
+        background-color: #bbbbbb;
+        color: #000000;
+        border-radius: 15px;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .blog_post_header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+    .blog_post h2 {
+        font-size: 22px;
+        margin: 0;
+        color: #000000;
+    }
+    .blog_post_date {
+        font-size: 14px;
+        color: #333333;
+        white-space: nowrap;
+    }
+    .blog_tag {
+        display: inline-block;
+        background-color: #f31010;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+    }
+    .blog_post p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0 0 14px 0;
+        color: #000000;
+    }
+    .blog_media {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 14px;
+        background-color: #999999;
+    }
+    .blog_media img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .blog_media video,
+    .blog_media audio {
+        display: block;
+        width: 100%;
+    }
+    .blog_media audio {
+        padding: 14px;
+        box-sizing: border-box;
+        background-color: #999999;
+    }
+    .blog_media_caption {
+        font-size: 13px;
+        color: #333333;
+        margin: 6px 0 0 0;
+        font-style: italic;
+    }
+</style>
+
+<div class="blog">
+    <h1>Blog</h1>
+
+    <!-- ================= POST 1 : IMAGE ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">Imagen</span>
+        <div class="blog_post_header">
+            <h2>Announcing Imagen: image generation, tuned by hand</h2>
+            <span class="blog_post_date">January 12, 2026</span>
+        </div>
+        <div class="blog_media">
+            <img src="img/campanileLabs.png" alt="Imagen sample output">
+        </div>
+        <p class="blog_media_caption">Sample frame rendered with the current Imagen pipeline. Replace with a real screenshot when ready.</p>
+        <p>
+            Imagen is my take on an image generation front end that stays out of your way. This first post walks through
+            why I built it, the opensource libraries it leans on under the hood, and what the roadmap looks like for
+            style presets and batch rendering.
+        </p>
+        <p>
+            <!-- Media placeholder: swap the <img> src above with a real screenshot or generated sample. -->
+            Every post in this template embeds a real piece of media — an image, an audio clip, or a video — so this
+            layout doubles as a working example you can copy for future entries.
+        </p>
+    </article>
+
+    <!-- ================= POST 2 : AUDIO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">Audioforma</span>
+        <div class="blog_post_header">
+            <h2>Audioforma: shaping sound with a one-man toolchain</h2>
+            <span class="blog_post_date">January 20, 2026</span>
+        </div>
+        <div class="blog_media">
+            <audio controls preload="none">
+                <source src="media/audioforma-demo.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p class="blog_media_caption">Demo tone — replace <code>media/audioforma-demo.mp3</code> with a real clip.</p>
+        <p>
+            Audioforma is built on RtAudio and PortAudio to keep latency low while experimenting with synthesis chains.
+            This post covers the signal path, why I picked those libraries over the alternatives, and a couple of early
+            demo patches.
+        </p>
+    </article>
+
+    <!-- ================= POST 3 : VIDEO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">playful Veo</span>
+        <div class="blog_post_header">
+            <h2>playful Veo: a lighter way to storyboard video</h2>
+            <span class="blog_post_date">February 2, 2026</span>
+        </div>
+        <div class="blog_media">
+            <video controls preload="none" poster="img/campanileLabs.png">
+                <source src="media/playful-veo-demo.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+        <p class="blog_media_caption">Test-pattern clip — replace <code>media/playful-veo-demo.mp4</code> with a real preview.</p>
+        <p>
+            playful Veo started as a weekend experiment in FFMPEG scripting and turned into a small storyboard-to-render
+            tool. Here's a first look at the timeline UI and where AI-assisted scene suggestions fit into the workflow.
+        </p>
+    </article>
+
+    <!-- ================= POST 4 : AUDIO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">sonido Diseno</span>
+        <div class="blog_post_header">
+            <h2>sonido Diseno: sound design presets for indie devs</h2>
+            <span class="blog_post_date">February 14, 2026</span>
+        </div>
+        <div class="blog_media">
+            <audio controls preload="none">
+                <source src="media/sonido-diseno-demo.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p class="blog_media_caption">Demo tone — replace <code>media/sonido-diseno-demo.mp3</code> with a real SFX sample.</p>
+        <p>
+            A quick tour of the preset library in sonido Diseno: UI clicks, impacts, ambiences, and a granular layer
+            editor for building your own. Built for game and app developers who need usable sound fast.
+        </p>
+    </article>
+
+    <!-- ================= POST 5 : VIDEO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">reVid</span>
+        <div class="blog_post_header">
+            <h2>reVid: batch re-encoding without losing your mind</h2>
+            <span class="blog_post_date">February 27, 2026</span>
+        </div>
+        <div class="blog_media">
+            <video controls preload="none" poster="img/campanileLabs.png">
+                <source src="media/revid-demo.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+        <p class="blog_media_caption">Test-pattern clip — replace <code>media/revid-demo.mp4</code> with a before/after comparison.</p>
+        <p>
+            reVid wraps FFMPEG in a queue-friendly interface for re-encoding large batches of footage. This entry covers
+            the codec presets I ship by default and a benchmark against a plain command-line pass.
+        </p>
+    </article>
+
+    <!-- ================= POST 6 : IMAGE ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">Dev Log</span>
+        <div class="blog_post_header">
+            <h2>Behind the scenes: the render pipeline diagram</h2>
+            <span class="blog_post_date">March 10, 2026</span>
+        </div>
+        <div class="blog_media">
+            <img src="img/campanileLabs.png" alt="Render pipeline diagram placeholder">
+        </div>
+        <p class="blog_media_caption">Placeholder image — swap for an actual pipeline diagram or screenshot.</p>
+        <p>
+            A behind-the-scenes look at how a frame moves from OpenGL/Vulkan through post-processing before it hits
+            the screen, and why MoltenVK made cross-platform support far less painful than expected.
+        </p>
+    </article>
+
+    <!-- ================= POST 7 : IMAGE ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">AI &amp; Workflow</span>
+        <div class="blog_post_header">
+            <h2>Using AI as a force multiplier, not a replacement</h2>
+            <span class="blog_post_date">March 24, 2026</span>
+        </div>
+        <div class="blog_media">
+            <img src="img/campanileLabs.png" alt="Workflow screenshot placeholder">
+        </div>
+        <p class="blog_media_caption">Placeholder image — swap for a real workflow or editor screenshot.</p>
+        <p>
+            Large Language Models let a one-person lab move at team speed. This post is an honest breakdown of where
+            AI genuinely accelerates development here, and where it still needs a very careful human editor.
+        </p>
+    </article>
+
+    <!-- ================= POST 8 : AUDIO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">Sound Design</span>
+        <div class="blog_post_header">
+            <h2>Five sound design tips I wish I knew earlier</h2>
+            <span class="blog_post_date">April 6, 2026</span>
+        </div>
+        <div class="blog_media">
+            <audio controls preload="none">
+                <source src="media/sound-design-demo.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <p class="blog_media_caption">Demo tone — replace <code>media/sound-design-demo.mp3</code> with a before/after mix.</p>
+        <p>
+            Layering, EQ carving, transient shaping, reverb sends, and knowing when to stop — a short field guide with
+            an audio example comparing a raw take to the finished mix.
+        </p>
+    </article>
+
+    <!-- ================= POST 9 : VIDEO ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">one-yolo-coreml</span>
+        <div class="blog_post_header">
+            <h2>one-yolo-coreml: fanning a single CoreML model across many feeds</h2>
+            <span class="blog_post_date">September 7, 2026</span>
+        </div>
+        <div class="blog_media">
+            <video controls preload="none" poster="media/one-yolo-coreml-1.jpg">
+                <source src="media/one-yolo-coreml-1.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+        <p class="blog_media_caption">Six dashcam streams, one CoreML YOLO instance, ~54 FPS per channel (full walkthrough in the post).</p>
+        <p>
+            one-yolo-coreml runs a single YOLO detector compiled to CoreML against a wall of dashcam feeds at once on
+            Apple Silicon, to see how many streams it holds before the frame rate falls off. Six feeds cost almost
+            nothing; eight still clears real-time.
+        </p>
+    </article>
+
+    <!-- ================= POST 10 : IMAGE ================= -->
+    <article class="blog_post">
+        <span class="blog_tag">playful Veo</span>
+        <div class="blog_post_header">
+            <h2>A first look at the playful Veo interface</h2>
+            <span class="blog_post_date">September 7, 2026</span>
+        </div>
+        <div class="blog_media">
+            <img src="media/playful-veo-screenshot-1.png" alt="Screenshot of the playful Veo app: a theatre-curtain backdrop, a ring of comedy and tragedy masks, and an Open Video File button">
+        </div>
+        <p class="blog_media_caption">Screenshot — the playful Veo landing screen (full walkthrough in the post).</p>
+        <p>
+            Here's where playful Veo stands today. The whole screen is one drop target: the stage curtain, the ring
+            of comedy-and-tragedy masks, and a single Open Video File button to get started. More on what happens
+            after you drop that first file in the next post.
+        </p>
+    </article>
+</div>

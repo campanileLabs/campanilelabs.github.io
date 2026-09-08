@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
          <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -18,10 +18,88 @@
     <!-- End Google Tag Manager -->
 
     <meta charset="utf-8">
-    <title>campanile Labs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>campanile Labs — small apps for video, sound &amp; image</title>
+    <meta name="description" content="campanile Labs is a one-person experimental software lab in California building small, feature-rich apps for video, sound, and image: playful Veo, reVid, sonido Diseno, Audioforma, and Imagen.">
+    <link rel="canonical" href="https://www.campanilelabs.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="campanile Labs">
+    <meta property="og:title" content="campanile Labs — small apps for video, sound &amp; image">
+    <meta property="og:description" content="A one-person experimental software lab in California building small, feature-rich apps for video, sound, and image.">
+    <meta property="og:url" content="https://www.campanilelabs.com/">
+    <meta property="og:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="campanile Labs — small apps for video, sound &amp; image">
+    <meta name="twitter:description" content="A one-person experimental software lab in California building small, feature-rich apps for video, sound, and image.">
+    <meta name="twitter:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "campanile Labs",
+      "url": "https://www.campanilelabs.com/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "campanile Labs",
+        "url": "https://www.campanilelabs.com/",
+        "logo": "https://www.campanilelabs.com/img/campanileLabs.png",
+        "founder": { "@type": "Person", "name": "Edsel Malasig" },
+        "areaServed": "US"
+      }
+    }
+    </script>
+
     <style>
-        body { margin: 0; background: #000000; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; gap: 20px; }
-        canvas { border: 1px solid #000000; }
+        body { margin: 0; background: #0c0b06; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 100vh; gap: 20px; }
+        a { color: #faf7f0; }
+        canvas { border: 1px solid #0c0b06; max-width: 100%; height: auto; }
+
+        .home-intro {
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 24px 56px;
+            color: #e8e8e8;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+        }
+        .home-intro p { font-size: 16px; margin: 0 0 20px; color: #cfcfcf; }
+        .home-intro .brand-red { color: #f31010; font-weight: bold; }
+        .home-nav { border-top: 1px solid #333; padding-top: 20px; }
+        .home-nav .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+        .home-nav .tab {
+            font: inherit; font-size: 14px; font-weight: bold; cursor: pointer;
+            color: #cfcfcf; background-color: transparent;
+            border: 1px solid #444; border-radius: 8px; padding: 8px 14px;
+        }
+        .home-nav .tab:hover { color: #ffffff; border-color: #666; }
+        .home-nav .tab[aria-selected="true"] {
+            color: #ffffff; background-color: #f31010; border-color: #f31010;
+        }
+        .home-nav .tab-panel { margin: 0 0 8px; }
+        .home-nav ul { margin: 0 0 12px; padding-left: 2em; list-style: none; }
+        .home-nav li { margin: 4px 0; }
+        .home-nav a { color: #faf7f0; text-decoration: none; }
+        .home-nav a:hover { text-decoration: underline; }
+        .home-nav .panel-more { margin: 0; font-size: 14px; }
+        .home-nav .panel-more a { font-weight: bold; }
+        .home-nav #panel-apps li { color: #faf7f0; }
+        .home-nav #panel-apps li a { color: #f31010; }
+        .home-nav #panel-blog li { margin: 8px 0; }
+        .home-nav #panel-blog li a { display: flex; align-items: center; gap: 10px; }
+        .home-nav .thumb {
+            flex: 0 0 auto; width: 64px; height: 40px;
+            object-fit: cover; border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -36,6 +114,67 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <canvas id="canvas" width="2560" height="1440"></canvas>
+
+    <section class="home-intro">
+        <h1 class="sr-only">campanile Labs</h1>
+        <p>
+            A one-person experimental software lab based in California. I weave open-source
+            libraries together with my own code, interface design, and artistic detail to
+            build feature-rich apps for video, audio, and image.
+        </p>
+        <nav class="home-nav">
+            <div class="tabs" role="tablist" aria-label="campanile Labs sections">
+                <button type="button" class="tab" id="tab-apps" role="tab" aria-selected="true" aria-controls="panel-apps">Apps</button>
+                <button type="button" class="tab" id="tab-blog" role="tab" aria-selected="false" aria-controls="panel-blog">Latest from the blog</button>
+            </div>
+
+            <div class="tab-panel" id="panel-apps" role="tabpanel" aria-labelledby="tab-apps">
+                <ul>
+                    <li><a href="/apps/playfulVeo.html">playful Veo</a> — real-time video-effects player</li>
+                    <li><a href="/apps/revid.html">reVid</a> — video editing app</li>
+                    <li><a href="/apps/sonidodiseno.html">sonido Diseno</a> — sound design app</li>
+                    <li><a href="/apps/audioforma.html">Audioforma</a> — audio visualizer that renders to video</li>
+                    <li><a href="/apps/imagen.html">Imagen</a> — image editor</li>
+                </ul>
+                <p class="panel-more"><a href="/apps.html">All apps &rarr;</a></p>
+            </div>
+
+            <div class="tab-panel" id="panel-blog" role="tabpanel" aria-labelledby="tab-blog">
+                <ul>
+                    <li><a href="/blog/blog_00001.html"><img class="thumb" src="/media/playful-veo-screenshot-1.png" alt="playful Veo landing screen">A first look at the playful Veo interface</a></li>
+                    <li><a href="/blog/blog_00002.html"><img class="thumb" src="/media/one-yolo-coreml-1.jpg" alt="one-yolo-coreml six-channel detection grid">one-yolo-coreml: fanning a single CoreML model across many feeds</a></li>
+                </ul>
+                <p class="panel-more"><a href="/blog.html">All posts &rarr;</a></p>
+            </div>
+        </nav>
+    </section>
+
+    <script>
+    (function () {
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.home-nav .tab'));
+        if (!tabs.length) return;
+        var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+        function select(i) {
+            tabs.forEach(function (t, j) {
+                var on = i === j;
+                t.setAttribute('aria-selected', on ? 'true' : 'false');
+                t.tabIndex = on ? 0 : -1;
+                if (panels[j]) panels[j].hidden = !on;
+            });
+        }
+        tabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { select(i); });
+            t.addEventListener('keydown', function (e) {
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+                e.preventDefault();
+                var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+                tabs[n].focus();
+                select(n);
+            });
+        });
+        select(0); // with JS: show one panel at a time; without JS both panels stay visible
+    })();
+    </script>
     <!-- <div style="color: white; font-family: monospace; font-size: 12px; max-width: 600px; text-align: center;">
         Click on the windows or door to navigate. Press 'D' to toggle debug overlay showing clickable regions.
     </div> -->
@@ -75,7 +214,11 @@
 
             @fragment
             fn fs_main(in: VertexOutput) -> @location(0) vec4f {
-                return textureSample(tex, texSampler, in.uv);
+                let c = textureSample(tex, texSampler, in.uv);
+                // swap the image's near-black background for the page background
+                let bg = vec3f(0.047, 0.043, 0.024);
+                let k = smoothstep(0.04, 0.10, max(c.r, max(c.g, c.b)));
+                return vec4f(mix(bg, c.rgb, k), 1.0);
             }
         `;
 
@@ -93,136 +236,56 @@
             const vertices = [];
             const indices = [];
 
-            const getNeighborsAtDistance = (idx, distance) => {
-                if (idx < 0) return new Set();
-                const row = Math.floor(idx / COLS);
-                const col = idx % COLS;
-                const neighbors = new Set();
-                
-                for (let dr = -distance; dr <= distance; dr++) {
-                    for (let dc = -distance; dc <= distance; dc++) {
-                        if (Math.max(Math.abs(dr), Math.abs(dc)) !== distance) continue;
-                        const nr = row + dr;
-                        const nc = col + dc;
-                        if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
-                            neighbors.add(nr * COLS + nc);
-                        }
-                    }
-                }
-                return neighbors;
-            };
+            const hoveredRow = hoveredIndex >= 0 ? Math.floor(hoveredIndex / COLS) : -1;
+            const hoveredCol = hoveredIndex >= 0 ? hoveredIndex % COLS : -1;
 
-            const neighbor1Set = getNeighborsAtDistance(hoveredIndex, 1);
-            const neighbor2Set = getNeighborsAtDistance(hoveredIndex, 2);
-            
-            // Identify the middle squares of each edge of the outer ring (distance 2)
-            const neighbor2MiddleSet = new Set();
-            if (hoveredIndex >= 0) {
-                const hRow = Math.floor(hoveredIndex / COLS);
-                const hCol = hoveredIndex % COLS;
-                
-                // Middle of top row (row offset -2, col offset 0)
-                // Middle of bottom row (row offset +2, col offset 0)
-                // Middle of left column (row offset 0, col offset -2)
-                // Middle of right column (row offset 0, col offset +2)
-                const middlePositions = [
-                    { dr: -2, dc: 0 },  // middle of first row (top)
-                    { dr: 2, dc: 0 },   // middle of last row (bottom)
-                    { dr: 0, dc: -2 },  // middle of first column (left)
-                    { dr: 0, dc: 2 },   // middle of last column (right)
-                ];
-                
-                for (const { dr, dc } of middlePositions) {
-                    const nr = hRow + dr;
-                    const nc = hCol + dc;
-                    if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
-                        neighbor2MiddleSet.add(nr * COLS + nc);
-                    }
-                }
+            function barShift(dist) {
+                const abs = Math.abs(dist);
+                if (abs === 0) return 0;
+                if (abs === 1) return Math.sign(dist) * NEIGHBOR_BULGE;
+                if (abs === 2) return Math.sign(dist) * NEIGHBOR2_MIDDLE_BULGE;
+                return 0;
             }
 
-            // Get hovered square position for bulge direction calculation
-            let hoveredRow = -1, hoveredCol = -1;
-            if (hoveredIndex >= 0) {
-                hoveredRow = Math.floor(hoveredIndex / COLS);
-                hoveredCol = hoveredIndex % COLS;
+            function addQuad(x0, y0, x1, y1, u0, v0, u1, v1) {
+                const vi = vertices.length / 4;
+                const [nx0, ny0] = pixelToNDC(x0, y0);
+                const [nx1, ny1] = pixelToNDC(x1, y1);
+                vertices.push(
+                    nx0, ny0, u0, v0,
+                    nx1, ny0, u1, v0,
+                    nx0, ny1, u0, v1,
+                    nx1, ny1, u1, v1
+                );
+                indices.push(vi, vi+1, vi+2, vi+2, vi+1, vi+3);
             }
 
+            // Horizontal bars — span full grid width, one per row
             for (let row = 0; row < ROWS; row++) {
-                for (let col = 0; col < COLS; col++) {
-                    const squareIndex = row * COLS + col;
-                    const vertexIndex = vertices.length / 4;
-
-                    let x0 = offsetX + col * SQUARE_SIZE + halfBorder;
-                    let y0 = offsetY + row * SQUARE_SIZE + halfBorder;
-                    let x1 = offsetX + (col + 1) * SQUARE_SIZE - halfBorder;
-                    let y1 = offsetY + (row + 1) * SQUARE_SIZE - halfBorder;
-
-                    let bulgeAmount = 0;
-                    if (squareIndex === hoveredIndex) {
-                        bulgeAmount = HOVER_BULGE;
-                    } else if (neighbor1Set.has(squareIndex)) {
-                        bulgeAmount = NEIGHBOR_BULGE;
-                    } else if (neighbor2Set.has(squareIndex)) {
-                        if (neighbor2MiddleSet.has(squareIndex)) {
-                            bulgeAmount = NEIGHBOR2_MIDDLE_BULGE;
-                        } else {
-                            bulgeAmount = NEIGHBOR2_REST_BULGE;
-                        }
-                    }
-
-                    if (bulgeAmount > 0) {
-                        // Calculate direction from hovered square to this square
-                        const centerX = (x0 + x1) / 2;
-                        const centerY = (y0 + y1) / 2;
-                        
-                        const hoveredCenterX = offsetX + hoveredCol * SQUARE_SIZE + SQUARE_SIZE / 2;
-                        const hoveredCenterY = offsetY + hoveredRow * SQUARE_SIZE + SQUARE_SIZE / 2;
-                        
-                        let dx = centerX - hoveredCenterX;
-                        let dy = centerY - hoveredCenterY;
-                        
-                        // Normalize direction (handle center square case)
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist > 0.001) {
-                            dx /= dist;
-                            dy /= dist;
-                        } else {
-                            // For the hovered square itself, no directional displacement
-                            dx = 0;
-                            dy = 0;
-                        }
-                        
-                        // Apply bulge displacement
-                        const displaceX = dx * bulgeAmount;
-                        const displaceY = dy * bulgeAmount;
-                        
-                        x0 += displaceX;
-                        x1 += displaceX;
-                        y0 += displaceY;
-                        y1 += displaceY;
-                    }
-
-                    const [ndcX0, ndcY0] = pixelToNDC(x0, y0);
-                    const [ndcX1, ndcY1] = pixelToNDC(x1, y1);
-
-                    const u0 = col / COLS;
-                    const v0 = row / ROWS;
-                    const u1 = (col + 1) / COLS;
-                    const v1 = (row + 1) / ROWS;
-
-                    vertices.push(
-                        ndcX0, ndcY0, u0, v0,
-                        ndcX1, ndcY0, u1, v0,
-                        ndcX0, ndcY1, u0, v1,
-                        ndcX1, ndcY1, u1, v1
-                    );
-
-                    indices.push(
-                        vertexIndex + 0, vertexIndex + 1, vertexIndex + 2,
-                        vertexIndex + 2, vertexIndex + 1, vertexIndex + 3
-                    );
+                let y0 = offsetY + row * SQUARE_SIZE + halfBorder;
+                let y1 = offsetY + (row + 1) * SQUARE_SIZE - halfBorder;
+                if (hoveredRow >= 0) {
+                    const shift = barShift(row - hoveredRow);
+                    y0 += shift;
+                    y1 += shift;
+                    if (row === hoveredRow) { y0 -= HOVER_BULGE / 2; y1 += HOVER_BULGE / 2; }
                 }
+                addQuad(offsetX, y0, offsetX + COLS * SQUARE_SIZE, y1,
+                        0, row / ROWS, 1, (row + 1) / ROWS);
+            }
+
+            // Vertical bars — span full grid height, one per column
+            for (let col = 0; col < COLS; col++) {
+                let x0 = offsetX + col * SQUARE_SIZE + halfBorder;
+                let x1 = offsetX + (col + 1) * SQUARE_SIZE - halfBorder;
+                if (hoveredCol >= 0) {
+                    const shift = barShift(col - hoveredCol);
+                    x0 += shift;
+                    x1 += shift;
+                    if (col === hoveredCol) { x0 -= HOVER_BULGE / 2; x1 += HOVER_BULGE / 2; }
+                }
+                addQuad(x0, offsetY, x1, offsetY + ROWS * SQUARE_SIZE,
+                        col / COLS, 0, (col + 1) / COLS, 1);
             }
 
             return {
@@ -262,10 +325,10 @@
         // The campanile is on the right side of the image (roughly x: 0.55-0.95)
         const clickableRegions = [
             // "campanile Labs" lettering on the left side of the image
-            { name: 'campanile Labs', x: 0.18, y: 0.50, width: 0.28, height: 0.18, url: 'main.html' },
+            { name: 'campanile Labs', x: 0.18, y: 0.50, width: 0.28, height: 0.18, url: '/' },
 
             // Main entrance door (large arched entrance at bottom center of tower)
-            { name: 'Main Entrance', x: 0.715, y: 0.84, width: 0.12, height: 0.16, url: 'main.html' },
+            { name: 'Main Entrance', x: 0.715, y: 0.84, width: 0.12, height: 0.16, url: '/' },
 
         ];
 
@@ -345,7 +408,7 @@
             });
 
             // Load texture from img/campanileLabs.png
-            await loadTextureFromURL('img/campanileLabs.png');
+            await loadTextureFromURL('/img/campanileLabs.png');
             console.log(`Dense grid ready: ${COLS}x${ROWS} = ${TOTAL_SQUARES} squares`);
         }
 
@@ -507,7 +570,7 @@
             const renderPass = commandEncoder.beginRenderPass({
                 colorAttachments: [{
                     view: context.getCurrentTexture().createView(),
-                    clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+                    clearValue: { r: 0.047, g: 0.043, b: 0.024, a: 1.0 },
                     loadOp: 'clear',
                     storeOp: 'store',
                 }],

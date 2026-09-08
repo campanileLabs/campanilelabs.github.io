@@ -1,0 +1,71 @@
+<style>
+    .blogpost { width: 100%; box-sizing: border-box; }
+    .blogpost .post_card {
+        background-color: #bbbbbb; color: #000000; border-radius: 15px;
+        padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blogpost .tag {
+        display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
+        font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+        padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .blogpost .head {
+        display: flex; align-items: baseline; justify-content: space-between;
+        flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
+    }
+    .blogpost h2 { font-size: 22px; margin: 0; color: #000000; }
+    .blogpost .date { font-size: 14px; color: #333333; white-space: nowrap; }
+    .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #000000; }
+    .blogpost .media {
+        width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 14px; background-color: #999999;
+    }
+    .blogpost .media img, .blogpost .media video { display: block; width: 100%; height: auto; }
+    .blogpost .media audio { display: block; width: 100%; padding: 14px; box-sizing: border-box; background-color: #999999; }
+    .blogpost .caption { font-size: 13px; color: #333333; font-style: italic; margin: 6px 0 0 0; }
+
+    /* pager is its own block, decoupled from the post card */
+    .blog_pager {
+        width: 100%; box-sizing: border-box;
+        background-color: #cfcfcf; color: #000000;
+        border-radius: 15px; padding: 14px 16px; margin-top: 14px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blog_pager .row {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .blog_pager .row a {
+        background-color: #f31010; color: #ffffff; font-weight: bold; text-decoration: none;
+        padding: 10px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap;
+    }
+    .blog_pager .row a:hover { background-color: #c20d0d; }
+    .blog_pager .row a.allposts { background-color: #7a7a7a; }
+    .blog_pager .row .slot { flex: 1; }
+    .blog_pager .row .slot.right { text-align: right; }
+    .blog_pager .row .slot.center { text-align: center; flex: 0 0 auto; }
+</style>
+
+<div class="blogpost">
+    <article class="post_card">
+        <span class="tag">Editing</span>
+        <div class="head">
+            <h2>A faster video editing workflow with reVid + playful Veo</h2>
+            <span class="date">April 21, 2026</span>
+        </div>
+        <div class="media">
+            <video controls preload="none" poster="img/campanileLabs.png">
+                <source src="media/editing-workflow-demo.mp4" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+        <p class="caption">Test-pattern clip &mdash; replace <code>media/editing-workflow-demo.mp4</code> with a real walkthrough.</p>
+        <p>Combining playful Veo for storyboarding with reVid for the final render cuts a lot of round-tripping out of the process. Here&#39;s the exact sequence I use for short-form clips end to end.</p>
+    </article>
+</div>
+
+<div class="blog_pager">
+    <nav class="row">
+        <span class="slot"><a href="javascript:void(0)" data-middle="blog/blog_00001.html">&larr; Newer Post</a></span>
+        <span class="slot center"><a href="javascript:void(0)" data-middle="blog.html" class="allposts">All Posts</a></span>
+        <span class="slot right"><a href="javascript:void(0)" data-middle="blog/blog_00003.html">Older Post &rarr;</a></span>
+    </nav>
+</div>
