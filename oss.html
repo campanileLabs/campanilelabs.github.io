@@ -1,46 +1,419 @@
-<style>
-    .osslibs {
-        padding: 32px;
-        font-family: Arial, sans-serif;
-    }
-    .osslibs h1 {
-        font-size: 28px;
-        margin-bottom: 16px;
-        color: #a0a8ff;
-    }
-    .osslibs p {
-        font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 16px;
-        color: #ccc;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WBLGCJ85');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMR75RR9');</script>
+    <!-- End Google Tag Manager -->
 
-<div class="osslibs">
-    <h1>Opensource</h1>
-    <p>campanile Labs is a proud advocate of Opensource software and a proud associate supporter of the Free Software Foundation.</p>
-    <p>Libraries used:</p>
-    <p>
-      Dear imgui
-      RtAudio
-      portaudio
-      FFMPEG
-      OpenGL
-      Vulkan
-      MoltenVk
-      Freetype Fonts
-      zlib
-      GLFW
-      glm
-      fftw3
-      glew
-    </p>
-    <p>License used:</p>
-    <p>
-      GPL 
-      LGPL
-      GPL 2.0
-      GPL 3.0
-      MIT
-    </p>
-</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Open Source — campanile Labs</title>
+    <meta name="description" content="The open-source libraries the campanile Labs apps are built on — FFmpeg, Dear ImGui, Vulkan, RtAudio, FFTW3 and more — and their licenses.">
+    <link rel="canonical" href="https://www.campanilelabs.com/oss.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="campanile Labs">
+    <meta property="og:title" content="Open Source — campanile Labs">
+    <meta property="og:description" content="The open-source libraries the campanile Labs apps are built on — FFmpeg, Dear ImGui, Vulkan, RtAudio, FFTW3 and more — and their licenses.">
+    <meta property="og:url" content="https://www.campanilelabs.com/oss.html">
+    <meta property="og:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Open Source — campanile Labs">
+    <meta name="twitter:description" content="The open-source libraries the campanile Labs apps are built on — FFmpeg, Dear ImGui, Vulkan, RtAudio, FFTW3 and more — and their licenses.">
+    <meta name="twitter:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+
+    <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #faf7f0; }
+    .div_container {
+        display: grid;
+        grid-template-columns: clamp(0px, 15%, 200px) 1fr clamp(0px, 15%, 200px);
+        width: 100%;
+        min-height: 55vh;
+    }
+    .div_left, .div_right { width: 100%; }
+    .div_middle { width: 100%; }
+    h1 { font-size: 28px; color: #333; }
+    @media (max-width: 600px) {
+        body { margin: 10px; }
+        .div_container { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBLGCJ85"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMR75RR9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <style>
+        .div_top {
+            color: white;
+            background-color: #f31010;
+            margin: 50px 0 100px 0;
+            padding: 10px 40px;
+            font-size: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .div_top_brand {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 160px;
+        }
+        .div_top_logo {
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 93.5px;
+            height: 125px;
+            pointer-events: none;
+        }
+        .div_top_menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+        .div_top_menu li {
+            background: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 16px;
+            position: relative;
+        }
+        .div_top_menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            display: block;
+        }
+        .div_top_menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown */
+        .div_top_menu li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #c20d0d;
+            border-radius: 8px;
+            min-width: 160px;
+            list-style: none;
+            margin: 0;
+            padding: 6px 0;
+            z-index: 100;
+        }
+        .div_top_menu li:hover .dropdown {
+            display: block;
+        }
+        .div_top_menu li .dropdown li {
+            font-size: 15px;
+            width: 100%;
+        }
+        .div_top_menu li .dropdown li a {
+            border-radius: 0;
+            padding: 8px 16px;
+            white-space: nowrap;
+        }
+        .div_top_menu li .dropdown li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <header class="div_top">
+        <a href="/" class="div_top_brand">
+            <img src="/img/topbar_campanileLabs_wb.png" alt="campanile Labs" class="div_top_logo">
+            campanile Labs
+        </a>
+        <nav>
+        <ul class="div_top_menu">
+            <li>
+                <a href="/apps.html">Apps</a>
+                <ul class="dropdown">
+                    <li><a href="/apps/audioforma.html">Audioforma</a></li>
+                    <li><a href="/apps/sonidodiseno.html">sonido Diseno</a></li>
+                    <li><a href="/apps/imagen.html">Imagen</a></li>
+                    <li><a href="/apps/playfulVeo.html">playful Veo</a></li>
+                    <li><a href="/apps/revid.html">reVid</a></li>
+                </ul>
+            </li>
+            <li><a href="/oss.html">Opensource</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+        </nav>
+    </header>
+
+    <div class="div_container">
+        <div class="div_left"></div>
+        <main class="div_middle">
+            <style>
+                .oss {
+                    background-color: #bbbbbb;
+                    width: 100%;
+                    color: #000000;
+                    border-radius: 15px;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    font-size: 18px;
+                    line-height: 1.6;
+                }
+                .oss h1 {
+                    font-size: 28px;
+                    margin: 0 0 14px 0;
+                    color: #000000;
+                }
+                .oss p {
+                    margin: 0 0 14px 0;
+                }
+                .oss_tablewrap {
+                    width: 100%;
+                    overflow-x: auto;
+                    border-radius: 10px;
+                }
+                .oss table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background-color: #8f8f8f;
+                    font-size: 16px;
+                }
+                .oss thead th {
+                    background-color: #f31010;
+                    color: #ffffff;
+                    font-weight: bold;
+                    text-align: left;
+                    padding: 10px 14px;
+                    white-space: nowrap;
+                }
+                .oss tbody td {
+                    padding: 10px 14px;
+                    border-top: 1px solid #6f6f6f;
+                    vertical-align: top;
+                }
+                .oss tbody tr:nth-child(even) {
+                    background-color: #808080;
+                }
+                .oss td.lib {
+                    font-weight: bold;
+                    white-space: nowrap;
+                }
+                .oss td.lic {
+                    white-space: nowrap;
+                }
+                .oss .note {
+                    font-size: 14px;
+                    color: #333333;
+                    font-style: italic;
+                    margin-top: 14px;
+                }
+                .oss .brand-red {
+                    color: #f31010;
+                    font-weight: bold;
+                }
+                .oss .brand-white {
+                    color: #ffffff;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div class="oss">
+                <h1>Opensource</h1>
+                <p>
+                    <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> is a proud advocate of opensource software and a proud associate supporter of the
+                    Free Software Foundation. The apps here are built by weaving these libraries together &mdash; 
+                </p>    
+                <p>
+                    Huge thanks to everyone who maintains them.
+                </p>
+
+                <div class="oss_tablewrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Library</th>
+                                <th>What it's for</th>
+                                <th>License</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="lib">Dear ImGui</td>
+                                <td>Immediate-mode GUI toolkit used for the tool panels, editors and debug overlays in the apps.</td>
+                                <td class="lic">MIT</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">RtAudio</td>
+                                <td>Real-time audio input/output across CoreAudio, WASAPI, ALSA and JACK with a single API.</td>
+                                <td class="lic">MIT-style (RtAudio license)</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">PortAudio</td>
+                                <td>Cross-platform audio I/O library; an alternative low-latency backend for capture and playback.</td>
+                                <td class="lic">MIT-style (PortAudio license)</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">FFmpeg</td>
+                                <td>Decoding, encoding, transcoding, muxing and filtering of audio and video &mdash; the media engine behind reVid and playful Veo.</td>
+                                <td class="lic">LGPL&nbsp;2.1+ / GPL&nbsp;2+</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">OpenGL</td>
+                                <td>Cross-platform graphics API for 2D/3D rendering; the default render path on older hardware.</td>
+                                <td class="lic">Open standard (Khronos)</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">Vulkan</td>
+                                <td>Low-level, explicit graphics and compute API used for the modern high-performance render path.</td>
+                                <td class="lic">Open standard (Khronos); headers Apache&nbsp;2.0</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">MoltenVK</td>
+                                <td>Runs Vulkan on top of Apple Metal so the same renderer works on macOS and iOS.</td>
+                                <td class="lic">Apache&nbsp;2.0</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">FreeType</td>
+                                <td>Font loading and glyph rasterization for all in-app text and UI typography.</td>
+                                <td class="lic">FreeType License (BSD-style) or GPL&nbsp;2.0</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">zlib</td>
+                                <td>Lossless DEFLATE compression used for asset packing, project files and PNG handling.</td>
+                                <td class="lic">zlib License</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">GLFW</td>
+                                <td>Window creation, OpenGL/Vulkan context setup, and keyboard/mouse/gamepad input.</td>
+                                <td class="lic">zlib/libpng License</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">GLM</td>
+                                <td>Header-only C++ mathematics library (vectors, matrices, quaternions) for graphics and transforms.</td>
+                                <td class="lic">MIT</td>
+                            </tr>
+                            <tr>
+                                <td class="lib">FFTW3</td>
+                                <td>Fast Fourier transforms powering spectral analysis and processing in Audioforma and sonido Diseno.</td>
+                                <td class="lic">GPL&nbsp;2.0+ (commercial license available)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="note">
+                    License names are summarized here for reference. OpenGL and Vulkan are open API standards from the Khronos Group rather
+                    than libraries.
+                </p>
+            </div>
+        </main>
+        <div class="div_right"></div>
+    </div>
+
+    <style>
+        .div_bottom {
+            color: white;
+            font-weight: bold;
+            background-color: #bd3417;
+            margin: 100px 0 50px 0;
+            padding: 10px 40px;
+            font-size: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .div_bottom_brand {
+            color: white;
+            font-weight: bold;
+            order: 1;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            padding-right: 160px;
+        }
+        .div_bottom_logo {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 93.5px;
+            height: 125px;
+            pointer-events: none;
+        }
+        .div_bottom_menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+        .div_bottom_menu li {
+            background: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 16px;
+        }
+        .div_bottom_menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .div_bottom_menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+
+    <footer class="div_bottom">
+        <nav>
+        <ul class="div_bottom_menu">
+            <li><a href="/apps.html">Apps</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/oss.html">Opensource</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+        </nav>
+        <span class="div_bottom_brand">
+            campanile Labs
+            <img src="/img/topbar_campanileLabs_wb.png" alt="campanile Labs" class="div_bottom_logo">
+        </span>
+    </footer>
+</body>
+</html>
