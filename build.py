@@ -16,6 +16,7 @@ here, but it is still listed in the sitemap.
 """
 
 import html
+import json
 import os
 import pathlib
 import re
@@ -26,6 +27,12 @@ BASE_URL = os.environ.get("SITE_BASE_URL", "https://www.campanilelabs.com").rstr
 ROOT = pathlib.Path(__file__).parent
 CONTENT = ROOT / "parts" / "content"
 TODAY = datetime.date.today().isoformat()
+
+DEFAULT_OG_IMAGE = BASE_URL + "/img/campanileLabs.png"
+DEFAULT_KEYWORDS = (
+    "campanile Labs, multimedia software, video, audio, image, "
+    "macOS apps, open source, Edsel Malasig"
+)
 
 HEADER = (ROOT / "parts" / "header.html").read_text(encoding="utf-8").strip()
 FOOTER = (ROOT / "parts" / "footer.html").read_text(encoding="utf-8").strip()
@@ -75,6 +82,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 
     <title>{title}</title>
     <meta name="description" content="{description}">
+    <meta name="keywords" content="{keywords}">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="{canonical}">
 
     <meta property="og:type" content="{og_type}">
@@ -116,6 +126,7 @@ PAGES = {
         src="apps.html",
         title="Apps — campanile Labs",
         description="Small, feature-rich apps for video, sound, and image from campanile Labs: playful Veo, reVid, sonido Diseno, Audioforma, and Imagen.",
+        keywords="playful Veo, reVid, sonido Diseno, Audioforma, Imagen, video-filter app, video editing software, sound design app, audio visualizer, image editor, real-time video effects, macOS multimedia apps",
     ),
     "oss.html": dict(
         src="oss.html",
@@ -126,9 +137,9 @@ PAGES = {
         src="blog.html",
         title="Blog — campanile Labs",
         description="Notes from the workshop at campanile Labs: build logs and first looks at the apps and experiments, newest first.",
-        extra_head='''    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Blog","name":"campanile Labs Blog","url":"%s/blog.html","publisher":{"@type":"Organization","name":"campanile Labs"}}
-    </script>''' % BASE_URL,
+        keywords="campanile Labs blog, playful Veo, Audioforma, one-yolo-coreml, Haiku OS, CoreML YOLO, audio visualization, video effects, build log, indie software development",
+        # extra_head (Blog + BlogPosting list JSON-LD) is filled in below,
+        # generated from the blog/* entries so it never drifts out of sync.
     ),
     "about.html": dict(
         src="about.html",
@@ -202,8 +213,88 @@ PAGES = {
     ),
 }
 
+# ---------------------------------------------------------------------------
+# Structured data (JSON-LD), assembled from the tables above so it stays in
+# sync with the pages themselves.  apps.html gets an ItemList of the apps;
+# blog.html gets a Blog with the full BlogPosting list.
+# ---------------------------------------------------------------------------
+
+APPS = [
+    ("playful Veo",   "playfulVeo.html",   "Real-time video-filter playground."),
+    ("reVid",         "revid.html",        "Video-editing app."),
+    ("sonido Diseno", "sonidodiseno.html", "Sound-design app."),
+    ("Audioforma",    "audioforma.html",   "Audio visualizer that renders to video."),
+    ("Imagen",        "imagen.html",       "Image editor."),
+]
+
+
+def jsonld_script(obj: dict) -> str:
+    """One <script type=application/ld+json> block, indented to match the head."""
+    return ('    <script type="application/ld+json">\n    '
+            + json.dumps(obj, ensure_ascii=False)
+            + '\n    </script>')
+
+
+def apps_itemlist() -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "campanile Labs apps",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": i + 1,
+                "item": {
+                    "@type": "SoftwareApplication",
+                    "name": name,
+                    "applicationCategory": "MultimediaApplication",
+                    "operatingSystem": "macOS",
+                    "url": f"{BASE_URL}/apps/{slug}",
+                    "description": desc,
+                    "author": {"@type": "Organization", "name": "campanile Labs"},
+                },
+            }
+            for i, (name, slug, desc) in enumerate(APPS)
+        ],
+    }
+
+
+def blog_jsonld() -> dict:
+    posts = []
+    for path, meta in PAGES.items():
+        if not path.startswith("blog/"):
+            continue
+        m = re.search(r'"datePublished":"([\d-]+)"', meta.get("extra_head", ""))
+        posts.append({
+            "@type": "BlogPosting",
+            "headline": meta["title"].rsplit(" — ", 1)[0],
+            "url": f"{BASE_URL}/{path}",
+            "datePublished": m.group(1) if m else TODAY,
+            "image": meta.get("og_image", DEFAULT_OG_IMAGE),
+            "author": {"@type": "Person", "name": "Edsel Malasig"},
+        })
+    posts.sort(key=lambda p: p["datePublished"], reverse=True)
+    return {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "campanile Labs Blog",
+        "url": f"{BASE_URL}/blog.html",
+        "publisher": {"@type": "Organization", "name": "campanile Labs"},
+        "blogPost": posts,
+    }
+
+
+PAGES["apps.html"]["extra_head"] = jsonld_script(apps_itemlist())
+PAGES["blog.html"]["extra_head"] = jsonld_script(blog_jsonld())
+
+
 # Extra URLs for the sitemap that aren't built here (hand-maintained).
 STATIC_URLS = ["index.html"]
+
+# GitHub Pages custom domain.  Without this file GitHub also serves the site at
+# <user>.github.io with no redirect, and Google indexes that instead.  Derived
+# from BASE_URL so it always matches the canonical host.
+CNAME_HOST = re.sub(r"^https?://", "", BASE_URL).split("/")[0]
 
 
 # Leave these alone when rooting URLs: already absolute, already root-relative,
@@ -261,6 +352,7 @@ def build_page(path: str, meta: dict) -> None:
         shell_css=SHELL_CSS,
         title=html.escape(meta["title"], quote=True),
         description=html.escape(meta["description"], quote=True),
+        keywords=html.escape(meta.get("keywords", DEFAULT_KEYWORDS), quote=True),
         canonical=canonical,
         og_type=meta.get("og_type", "website"),
         og_image=meta.get("og_image", BASE_URL + "/img/campanileLabs.png"),
@@ -300,12 +392,22 @@ def build_robots() -> None:
     print("  wrote robots.txt")
 
 
+def build_cname() -> None:
+    # Skip when BASE_URL is overridden for a local preview.
+    if "localhost" in CNAME_HOST or "127.0.0.1" in CNAME_HOST:
+        print("  skipped CNAME (local preview base URL)")
+        return
+    (ROOT / "CNAME").write_text(CNAME_HOST + "\n", encoding="utf-8")
+    print("  wrote CNAME")
+
+
 def main() -> None:
     print("building pages:")
     for path, meta in PAGES.items():
         build_page(path, meta)
     build_sitemap()
     build_robots()
+    build_cname()
     print("done.")
 
 

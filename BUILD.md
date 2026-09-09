@@ -12,7 +12,12 @@ will be overwritten on the next build.
 | `parts/content/apps/*.html` | `/apps/*.html` |
 | `parts/content/blog/*.html` | `/blog/*.html` |
 | `parts/header.html`, `parts/footer.html` | the nav on every generated page |
-| `build.py` `PAGES` dict | `<title>` / `<meta description>` / canonical / Open Graph / JSON-LD per page |
+| `build.py` `PAGES` dict | `<title>` / `<meta description>` / `<meta keywords>` / robots / canonical / Open Graph / JSON-LD per page |
+
+`<meta keywords>` and `robots` are emitted on every generated page (`keywords`
+falls back to `DEFAULT_KEYWORDS`). The `apps.html` `ItemList` and the `blog.html`
+`Blog` + `BlogPosting` list JSON-LD are generated from `APPS` and the `blog/*`
+`PAGES` entries — add a post the normal way and the blog index picks it up.
 
 `index.html` (the WebGPU canvas homepage) is hand-maintained and NOT generated —
 but it is still listed in `sitemap.xml`, so keep `build.py`'s `STATIC_URLS` in sync
@@ -32,7 +37,10 @@ alone. There is no `<base>` tag — pages just need to be served from the domain
 python3 build.py
 ```
 
-Regenerates all pages plus `sitemap.xml` and `robots.txt`.
+Regenerates all pages plus `sitemap.xml`, `robots.txt`, and `CNAME`
+(the GitHub Pages custom domain — host taken from `BASE_URL`, skipped for a
+`localhost` preview build). Keep `CNAME` in the deployed output or GitHub serves
+the site at `<user>.github.io` with no redirect and Google indexes that instead.
 
 Internal links are root-relative and work on any host served from `/`. Only the
 absolute URLs — `<link rel="canonical">`, `og:url`, `og:image`, and `sitemap.xml` —
