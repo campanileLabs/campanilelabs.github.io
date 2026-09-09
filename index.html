@@ -93,29 +93,38 @@
         .home-intro p { font-size: 16px; margin: 0 0 20px; color: #cfcfcf; }
         .home-intro .brand-red { color: #f31010; font-weight: bold; }
         .home-intro .brand-bg { color: #faf7f0; font-weight: bold; }
-        .home-nav { border-top: 1px solid #333; padding-top: 20px; }
+
+        /* Gray card that envelops the tabbed entries — matches .apps / .blog_list */
+        .home-nav {
+            background-color: #bbbbbb;
+            color: #000000;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .home-nav .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
         .home-nav .tab {
             font: inherit; font-size: 14px; font-weight: bold; cursor: pointer;
-            color: #cfcfcf; background-color: transparent;
-            border: 1px solid #444; border-radius: 8px; padding: 8px 14px;
+            color: #000000; background-color: transparent;
+            border: 1px solid #7a7a7a; border-radius: 8px; padding: 8px 14px;
         }
-        .home-nav .tab:hover { color: #ffffff; border-color: #666; }
+        .home-nav .tab:hover { color: #000000; border-color: #555; }
         .home-nav .tab[aria-selected="true"] {
             color: #ffffff; background-color: #f31010; border-color: #f31010;
         }
         .home-nav .tab-panel { margin: 0 0 8px; }
-        .home-nav ul { margin: 0 0 12px; padding-left: 2em; list-style: none; }
+        .home-nav ul { margin: 0; padding-left: 2em; list-style: none; }
         .home-nav li { margin: 4px 0; }
-        .home-nav a { color: #faf7f0; text-decoration: none; }
-        .home-nav a:hover { text-decoration: underline; }
-        .home-nav .tab-panel h2 { margin: 0 0 10px; font-size: 15px; color: #faf7f0; }
+        .home-nav a { color: #000000; text-decoration: none; font-weight: bold; }
+        .home-nav a:hover { color: #f31010; text-decoration: underline; }
+        .home-nav .tab-panel h2 { margin: 0 0 10px; font-size: 15px; color: #000000; }
         .home-nav .tab-panel p { margin: 0 0 12px; font-size: 15px; }
         .home-nav .panel-more { margin: 0; font-size: 14px; }
         .home-nav .panel-more a { font-weight: bold; }
-        .home-nav #panel-apps li { color: #faf7f0; }
+        .home-nav #panel-apps li { color: #000000; }
         .home-nav #panel-apps li a { color: #f31010; }
-        .home-nav #panel-oss li { color: #faf7f0; }
+        .home-nav #panel-oss li { color: #000000; }
         .home-nav #panel-oss li b { color: #f31010; }
         .home-nav #panel-blog li { margin: 8px 0; }
         .home-nav #panel-blog li a { display: flex; align-items: center; gap: 10px; }
