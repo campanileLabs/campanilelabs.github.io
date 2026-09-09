@@ -74,6 +74,7 @@
         }
         .home-intro p { font-size: 16px; margin: 0 0 20px; color: #cfcfcf; }
         .home-intro .brand-red { color: #f31010; font-weight: bold; }
+        .home-intro .brand-bg { color: #faf7f0; font-weight: bold; }
         .home-nav { border-top: 1px solid #333; padding-top: 20px; }
         .home-nav .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
         .home-nav .tab {
@@ -90,10 +91,14 @@
         .home-nav li { margin: 4px 0; }
         .home-nav a { color: #faf7f0; text-decoration: none; }
         .home-nav a:hover { text-decoration: underline; }
+        .home-nav .tab-panel h2 { margin: 0 0 10px; font-size: 15px; color: #faf7f0; }
+        .home-nav .tab-panel p { margin: 0 0 12px; font-size: 15px; }
         .home-nav .panel-more { margin: 0; font-size: 14px; }
         .home-nav .panel-more a { font-weight: bold; }
         .home-nav #panel-apps li { color: #faf7f0; }
         .home-nav #panel-apps li a { color: #f31010; }
+        .home-nav #panel-oss li { color: #faf7f0; }
+        .home-nav #panel-oss li b { color: #f31010; }
         .home-nav #panel-blog li { margin: 8px 0; }
         .home-nav #panel-blog li a { display: flex; align-items: center; gap: 10px; }
         .home-nav .thumb {
@@ -118,7 +123,7 @@
     <section class="home-intro">
         <h1 class="sr-only">campanile Labs</h1>
         <p>
-            A experimental multimedia software lab based in California. I weave open-source
+            An experimental multimedia software lab based in California. I weave open-source
             libraries together with my own code, interface design, and artistic detail to
             build feature-rich apps for video, audio, and image.
         </p>
@@ -126,6 +131,8 @@
             <div class="tabs" role="tablist" aria-label="campanile Labs sections">
                 <button type="button" class="tab" id="tab-apps" role="tab" aria-selected="true" aria-controls="panel-apps">Apps</button>
                 <button type="button" class="tab" id="tab-blog" role="tab" aria-selected="false" aria-controls="panel-blog">Latest from the blog</button>
+                <button type="button" class="tab" id="tab-oss" role="tab" aria-selected="false" aria-controls="panel-oss">Open Source</button>
+                <button type="button" class="tab" id="tab-about" role="tab" aria-selected="false" aria-controls="panel-about">About</button>
             </div>
 
             <div class="tab-panel" id="panel-apps" role="tabpanel" aria-labelledby="tab-apps">
@@ -141,10 +148,35 @@
 
             <div class="tab-panel" id="panel-blog" role="tabpanel" aria-labelledby="tab-blog">
                 <ul>
+                    <li><a href="/blog/blog_00003.html"><img class="thumb" src="/media/haiku-os-2.jpg" alt="Haiku OS desktop running in qemu">Haiku OS light as a feather and launches like a rocket on qemu and on my Mac</a></li>
                     <li><a href="/blog/blog_00001.html"><img class="thumb" src="/media/playful-veo-screenshot-1.png" alt="playful Veo landing screen">A first look at the playful Veo interface</a></li>
                     <li><a href="/blog/blog_00002.html"><img class="thumb" src="/media/one-yolo-coreml-1.jpg" alt="one-yolo-coreml six-channel detection grid">one-yolo-coreml: fanning a single CoreML model across many feeds</a></li>
                 </ul>
                 <p class="panel-more"><a href="/blog.html">All posts &rarr;</a></p>
+            </div>
+
+            <div class="tab-panel" id="panel-oss" role="tabpanel" aria-labelledby="tab-oss">
+                <h2>Open Source Libraries used:</h2>
+                <ul>
+                    <li><b>Dear ImGui</b> &mdash; tool panels, editors and debug overlays</li>
+                    <li><b>RtAudio</b> &mdash; real-time audio I/O across CoreAudio, WASAPI, ALSA and JACK</li>
+                    <li><b>PortAudio</b> &mdash; alternative low-latency audio capture and playback backend</li>
+                    <li><b>FFmpeg</b> &mdash; audio/video decode, encode, transcode, mux and filtering</li>
+                    <li><b>OpenGL</b> &mdash; 2D/3D graphics API, the render path on older hardware</li>
+                    <li><b>Vulkan</b> &mdash; low-level graphics and compute, the modern render path</li>
+                    <li><b>MoltenVK</b> &mdash; runs Vulkan on Apple Metal for macOS and iOS</li>
+                    <li><b>FreeType</b> &mdash; font loading and glyph rasterization for all in-app text</li>
+                    <li><b>zlib</b> &mdash; DEFLATE compression for asset packing, project files and PNG</li>
+                    <li><b>GLFW</b> &mdash; window creation, GL/Vulkan context setup and input</li>
+                    <li><b>GLM</b> &mdash; header-only C++ math (vectors, matrices, quaternions) for graphics</li>
+                    <li><b>FFTW3</b> &mdash; fast Fourier transforms for spectral analysis and processing</li>
+                </ul>
+                <p class="panel-more"><a href="/oss.html">Full list with licenses &rarr;</a></p>
+            </div>
+
+            <div class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+                <p>A one-person experimental multimedia software lab in California, run by <span class="brand-red">Edsel</span> <span class="brand-bg">Malasig</span> &mdash; open-source libraries woven together with custom code, interface design and an artistic touch to create cool mujltimedia software.</p>
+                <p class="panel-more"><a href="/about.html">Read more &rarr;</a></p>
             </div>
         </nav>
     </section>

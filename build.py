@@ -180,6 +180,16 @@ PAGES = {
     {"@context":"https://schema.org","@type":"BlogPosting","headline":"one-yolo-coreml: fanning a single CoreML model across many feeds","datePublished":"2026-09-07","dateModified":"2026-09-07","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"%s/media/one-yolo-coreml-1.jpg","mainEntityOfPage":"%s/blog/blog_00002.html"}
     </script>''' % (BASE_URL, BASE_URL),
     ),
+    "blog/blog_00003.html": dict(
+        src="blog/blog_00003.html",
+        title="Haiku OS launches like a rocket on qemu and on my Mac — campanile Labs",
+        description="Look at the size of the Haiku OS image — it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.",
+        og_type="article",
+        og_image=BASE_URL + "/media/haiku-os-2.jpg",
+        extra_head='''    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Haiku OS launches like a rocket on qemu and on my Mac","datePublished":"2026-09-08","dateModified":"2026-09-08","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"%s/media/haiku-os-2.jpg","mainEntityOfPage":"%s/blog/blog_00003.html"}
+    </script>''' % (BASE_URL, BASE_URL),
+    ),
 }
 
 # Extra URLs for the sitemap that aren't built here (hand-maintained).

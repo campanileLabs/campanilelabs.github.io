@@ -17,21 +17,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>About — campanile Labs</title>
-    <meta name="description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
-    <link rel="canonical" href="https://www.campanilelabs.com/about.html">
+    <title>Haiku OS light as a feather and launches like a rocket on qemu and on my Mac! — campanile Labs</title>
+    <meta name="description" content="Look at the size of the Haiku OS image — it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
+    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00003.html">
 
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="About — campanile Labs">
-    <meta property="og:description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
-    <meta property="og:url" content="https://www.campanilelabs.com/about.html">
-    <meta property="og:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
+    <meta property="og:title" content="Haiku OS launches like a rocket on qemu and on my Mac — campanile Labs">
+    <meta property="og:description" content="Look at the size of the Haiku OS image — it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
+    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00003.html">
+    <meta property="og:image" content="https://www.campanilelabs.com/media/haiku-os-2.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About — campanile Labs">
-    <meta name="twitter:description" content="campanile Labs is a one-person experimental software lab in California run by Edsel Malasig, building multimedia tools for image, 3D, audio, and video.">
-    <meta name="twitter:image" content="https://www.campanilelabs.com/img/campanileLabs.png">
-
+    <meta name="twitter:title" content="Haiku OS launches like a rocket on qemu and on my Mac — campanile Labs">
+    <meta name="twitter:description" content="Look at the size of the Haiku OS image — it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
+    <meta name="twitter:image" content="https://www.campanilelabs.com/media/haiku-os-2.jpg">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Haiku OS launches like a rocket on qemu and on my Mac","datePublished":"2026-09-08","dateModified":"2026-09-08","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://www.campanilelabs.com/media/haiku-os-2.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00003.html"}
+    </script>
     <style>
     body { font-family: Arial, sans-serif; margin: 20px; background-color: #faf7f0; }
     .div_container {
@@ -178,83 +180,80 @@
         <div class="div_left"></div>
         <main class="div_middle">
             <style>
-                .about {
-                    background-color: #bbbbbb;
-                    width: 100%;
-                    color: #000000;
-                    border-radius: 15px;
-                    padding: 15px;
-                    box-sizing: border-box;
-                    font-size: 20px;
-                    line-height: 1.6;
+                .blogpost { width: 100%; box-sizing: border-box; }
+                .blogpost .post_card {
+                    background-color: #bbbbbb; color: #000000; border-radius: 15px;
+                    padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 }
-                .about .brand-red {
-                    color: #f31010;
-                    font-weight: bold;
+                .blogpost .tag {
+                    display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
+                    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+                    padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
                 }
-                .about .brand-white {
-                    color: #ffffff;
-                    font-weight: bold;
+                .blogpost .head {
+                    display: flex; align-items: baseline; justify-content: space-between;
+                    flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
                 }
+                .blogpost h2 { font-size: 22px; margin: 0; color: #000000; }
+                .blogpost .date { font-size: 14px; color: #333333; white-space: nowrap; }
+                .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #000000; }
+                .blogpost .media {
+                    width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 6px; background-color: #999999;
+                }
+                .blogpost .media img { display: block; width: 100%; height: auto; }
+                .blogpost .caption { font-size: 13px; color: #333333; font-style: italic; margin: 6px 0 18px 0; }
 
-                .contact {
-                    background-color: #bbbbbb;
-                    width: 100%;
-                    color: #000000;
-                    border-radius: 15px;
-                    padding: 15px;
-                    box-sizing: border-box;
-                    font-size: 20px;
-                    line-height: 1.6;
+                /* pager is its own block, decoupled from the post card */
+                .blog_pager {
+                    width: 100%; box-sizing: border-box;
+                    background-color: #cfcfcf; color: #000000;
+                    border-radius: 15px; padding: 14px 16px; margin-top: 14px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 }
-                .contact .brand-red {
-                    color: #f31010;
-                    font-weight: bold;
+                .blog_pager .row {
+                    display: flex; align-items: center; justify-content: space-between; gap: 10px;
                 }
-                .contact .brand-white {
-                    color: #ffffff;
-                    font-weight: bold;
+                .blog_pager .row a {
+                    background-color: #f31010; color: #ffffff; font-weight: bold; text-decoration: none;
+                    padding: 10px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap;
                 }
-                .divider-red {
-                    border: none;
-                    border-top: 3px solid #f31010;
-                    margin: 24px 0;
-                }
+                .blog_pager .row a:hover { background-color: #c20d0d; }
+                .blog_pager .row a.allposts { background-color: #7a7a7a; }
+                .blog_pager .row .slot { flex: 1; }
+                .blog_pager .row .slot.right { text-align: right; }
+                .blog_pager .row .slot.center { text-align: center; flex: 0 0 auto; }
             </style>
 
-            <div class="about">
-                <p><strong>A multimedia software laboratory.</strong></p>
-                <p>
-                    <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> is a one-person experimental software lab based in California.
-                    I take open-source libraries and put them to work building feature-rich tools for images, 3D graphics, audio, and video.
-                </p>
-                <p>
-                    AI and large language models changed what one developer can ship. I use them to move fast &mdash; wiring libraries
-                    together, filling in reference, and doing the work that would normally take a team &mdash; then layer my own code, interface
-                    design, and artistic detail on top. Every app in the <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> Apps section was built this way.
-                </p>
-                <p>
-                    Education was the longest and hardest part of the journey, and earning a Bachelor's in Computer Science from
-                    San Diego State University was worth it. When I went looking for a name to publish my work under, nothing fit until
-                    <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> &mdash; a nod to my alma mater's bell tower, and a name that simply sounds right.
-                </p>
-                <p>
-                    Take a look around, try the apps, and pick up the ones you like. I think you will.
-                </p>
-                <p>
-                    Thank you,
-                </p>
-                <p>
-                    Edsel Malasig
-                </p>
-            </div>
-            <hr class="divider-red">
-            <div class="contact">
-                <p><strong>Contact</strong></p>
-                <p>
-        
-                </p>
+            <div class="blogpost">
+                <article class="post_card">
+                    <span class="tag">Haiku OS</span>
+                    <div class="head">
+                        <h2>Haiku OS light as a feather and launches like a rocket on qemu and on my Mac</h2>
+                        <span class="date">September 8, 2026</span>
+                    </div>
 
+                    <p>Look at the size of the files for the Haiku OS image &mdash; it sure is small, and it can still perform well. As of late there is no graphics acceleration and it only launches on an emulator, but even inside qemu on my Mac it boots to a usable desktop almost instantly.</p>
+
+                    <div class="media">
+                        <img src="/media/haiku-os-1.jpg" alt="File listing showing the Haiku OS disk images and their sizes">
+                    </div>
+                    <p class="caption">1 &mdash; The build folder: <code>haiku-minimum.image</code> is the whole operating system.</p>
+
+                    <div class="media">
+                        <img src="/media/haiku-os-2.jpg" alt="Haiku OS desktop running under qemu on macOS, with the Tracker file browser open">
+                    </div>
+                    <p class="caption">2 &mdash; Haiku under qemu on macOS &mdash; desktop and Tracker up in seconds.</p>
+
+                    <p>A lot of huge, fast progress has been made toward the release of this operating system, and it looks promising. I think I am going to dive in and start contributing to this cause.</p>
+                </article>
+            </div>
+
+            <div class="blog_pager">
+                <nav class="row">
+                    <span class="slot">&nbsp;</span>
+                    <span class="slot center"><a href="/blog.html" class="allposts">All Posts</a></span>
+                    <span class="slot right"><a href="/blog/blog_00001.html">Older Post &rarr;</a></span>
+                </nav>
             </div>
         </main>
         <div class="div_right"></div>
