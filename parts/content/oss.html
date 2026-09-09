@@ -1,0 +1,158 @@
+<style>
+    .oss {
+        background-color: #bbbbbb;
+        width: 100%;
+        color: #000000;
+        border-radius: 15px;
+        padding: 20px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    .oss h1 {
+        font-size: 28px;
+        margin: 0 0 14px 0;
+        color: #000000;
+    }
+    .oss p {
+        margin: 0 0 14px 0;
+    }
+    .oss_tablewrap {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 10px;
+    }
+    .oss table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #8f8f8f;
+        font-size: 16px;
+    }
+    .oss thead th {
+        background-color: #f31010;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: left;
+        padding: 10px 14px;
+        white-space: nowrap;
+    }
+    .oss tbody td {
+        padding: 10px 14px;
+        border-top: 1px solid #6f6f6f;
+        vertical-align: top;
+    }
+    .oss tbody tr:nth-child(even) {
+        background-color: #808080;
+    }
+    .oss td.lib {
+        font-weight: bold;
+        white-space: nowrap;
+    }
+    .oss td.lic {
+        white-space: nowrap;
+    }
+    .oss .note {
+        font-size: 14px;
+        color: #333333;
+        font-style: italic;
+        margin-top: 14px;
+    }
+    .oss .brand-red {
+        color: #f31010;
+        font-weight: bold;
+    }
+    .oss .brand-white {
+        color: #ffffff;
+        font-weight: bold;
+    }
+</style>
+
+<div class="oss">
+    <h1>Opensource</h1>
+    <p>
+        <span class="brand-red">campanile</span> <span class="brand-white">Labs</span> is a proud advocate of opensource software and a proud associate supporter of the
+        Free Software Foundation. The apps here are built by weaving these libraries together &mdash; 
+    </p>    
+    <p>
+        Huge thanks to everyone who maintains them.
+    </p>
+
+    <div class="oss_tablewrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Library</th>
+                    <th>What it's for</th>
+                    <th>License</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lib">Dear ImGui</td>
+                    <td>Immediate-mode GUI toolkit used for the tool panels, editors and debug overlays in the apps.</td>
+                    <td class="lic">MIT</td>
+                </tr>
+                <tr>
+                    <td class="lib">RtAudio</td>
+                    <td>Real-time audio input/output across CoreAudio, WASAPI, ALSA and JACK with a single API.</td>
+                    <td class="lic">MIT-style (RtAudio license)</td>
+                </tr>
+                <tr>
+                    <td class="lib">PortAudio</td>
+                    <td>Cross-platform audio I/O library; an alternative low-latency backend for capture and playback.</td>
+                    <td class="lic">MIT-style (PortAudio license)</td>
+                </tr>
+                <tr>
+                    <td class="lib">FFmpeg</td>
+                    <td>Decoding, encoding, transcoding, muxing and filtering of audio and video &mdash; the media engine behind reVid and playful Veo.</td>
+                    <td class="lic">LGPL&nbsp;2.1+ / GPL&nbsp;2+</td>
+                </tr>
+                <tr>
+                    <td class="lib">OpenGL</td>
+                    <td>Cross-platform graphics API for 2D/3D rendering; the default render path on older hardware.</td>
+                    <td class="lic">Open standard (Khronos)</td>
+                </tr>
+                <tr>
+                    <td class="lib">Vulkan</td>
+                    <td>Low-level, explicit graphics and compute API used for the modern high-performance render path.</td>
+                    <td class="lic">Open standard (Khronos); headers Apache&nbsp;2.0</td>
+                </tr>
+                <tr>
+                    <td class="lib">MoltenVK</td>
+                    <td>Runs Vulkan on top of Apple Metal so the same renderer works on macOS and iOS.</td>
+                    <td class="lic">Apache&nbsp;2.0</td>
+                </tr>
+                <tr>
+                    <td class="lib">FreeType</td>
+                    <td>Font loading and glyph rasterization for all in-app text and UI typography.</td>
+                    <td class="lic">FreeType License (BSD-style) or GPL&nbsp;2.0</td>
+                </tr>
+                <tr>
+                    <td class="lib">zlib</td>
+                    <td>Lossless DEFLATE compression used for asset packing, project files and PNG handling.</td>
+                    <td class="lic">zlib License</td>
+                </tr>
+                <tr>
+                    <td class="lib">GLFW</td>
+                    <td>Window creation, OpenGL/Vulkan context setup, and keyboard/mouse/gamepad input.</td>
+                    <td class="lic">zlib/libpng License</td>
+                </tr>
+                <tr>
+                    <td class="lib">GLM</td>
+                    <td>Header-only C++ mathematics library (vectors, matrices, quaternions) for graphics and transforms.</td>
+                    <td class="lic">MIT</td>
+                </tr>
+                <tr>
+                    <td class="lib">FFTW3</td>
+                    <td>Fast Fourier transforms powering spectral analysis and processing in Audioforma and sonido Diseno.</td>
+                    <td class="lic">GPL&nbsp;2.0+ (commercial license available)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        License names are summarized here for reference. OpenGL and Vulkan are open API standards from the Khronos Group rather
+        than libraries.
+    </p>
+</div>

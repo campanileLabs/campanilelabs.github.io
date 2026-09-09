@@ -1,0 +1,145 @@
+<style>
+    .blogpost { width: 100%; box-sizing: border-box; }
+    .blogpost .post_card {
+        background-color: #bbbbbb; color: #000000; border-radius: 15px;
+        padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blogpost .tag {
+        display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
+        font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+        padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .blogpost .head {
+        display: flex; align-items: baseline; justify-content: space-between;
+        flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
+    }
+    .blogpost h2 { font-size: 22px; margin: 0; color: #000000; }
+    .blogpost .date { font-size: 14px; color: #333333; white-space: nowrap; }
+    .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #000000; }
+    .blogpost .caption { font-size: 13px; color: #333333; font-style: italic; margin: 6px 0 18px 0; }
+
+    /* clickable recording thumbnails */
+    .blogpost .yolo-thumb {
+        display: block; width: 100%; margin: 0 0 10px 0; padding: 0; border: 0;
+        position: relative; cursor: pointer; border-radius: 10px; overflow: hidden;
+        background: #999999 center center / cover no-repeat; aspect-ratio: 2446 / 1088;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    .blogpost .yolo-thumb.wide { aspect-ratio: 2672 / 918; }
+    .blogpost .yolo-play {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        width: 54px; height: 54px; border-radius: 50%; background-color: rgba(0,0,0,0.6);
+        transition: background-color .15s ease, transform .15s ease;
+    }
+    .blogpost .yolo-play::after {
+        content: ""; position: absolute; top: 50%; left: 54%; transform: translate(-50%,-50%);
+        border-style: solid; border-width: 10px 0 10px 17px;
+        border-color: transparent transparent transparent #ffffff;
+    }
+    .blogpost .yolo-thumb:hover .yolo-play {
+        background-color: #f31010; transform: translate(-50%,-50%) scale(1.06);
+    }
+    .blogpost .yolo-meta {
+        position: absolute; left: 8px; bottom: 8px;
+        background-color: rgba(0,0,0,0.72); color: #ffffff;
+        font-size: 11px; font-weight: bold; letter-spacing: .3px;
+        padding: 3px 8px; border-radius: 999px;
+    }
+
+    /* in-page popup */
+    .yolo-modal {
+        display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 100000; background-color: rgba(0,0,0,0.86);
+        align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;
+    }
+    .yolo-modal-inner { position: relative; width: 100%; max-width: 1100px; }
+    .yolo-modal video {
+        display: block; width: 100%; max-height: 84vh; border-radius: 10px; background-color: #000000;
+    }
+    .yolo-close {
+        position: absolute; top: -14px; right: -14px; width: 36px; height: 36px;
+        border: 0; border-radius: 50%; cursor: pointer;
+        background-color: #f31010; color: #ffffff; font-size: 22px; line-height: 34px; font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 560px) { .yolo-close { top: 6px; right: 6px; } }
+
+    /* pager is its own block, decoupled from the post card */
+    .blog_pager {
+        width: 100%; box-sizing: border-box;
+        background-color: #cfcfcf; color: #000000;
+        border-radius: 15px; padding: 14px 16px; margin-top: 14px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blog_pager .row {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .blog_pager .row a {
+        background-color: #f31010; color: #ffffff; font-weight: bold; text-decoration: none;
+        padding: 10px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap;
+    }
+    .blog_pager .row a:hover { background-color: #c20d0d; }
+    .blog_pager .row a.allposts { background-color: #7a7a7a; }
+    .blog_pager .row .slot { flex: 1; }
+    .blog_pager .row .slot.right { text-align: right; }
+    .blog_pager .row .slot.center { text-align: center; flex: 0 0 auto; }
+</style>
+
+<div class="blogpost">
+    <article class="post_card">
+        <span class="tag">one-yolo-coreml</span>
+        <div class="head">
+            <h2>one-yolo-coreml: fanning a single CoreML model across many feeds</h2>
+            <span class="date">September 7, 2026</span>
+        </div>
+
+        <p>one-yolo-coreml is a small experiment: take <em>one</em> YOLO detector compiled to CoreML and run it against a wall of dashcam streams at once on Apple Silicon &mdash; no per-stream model copy, just one instance time-sliced across every channel. The question was how many feeds it holds before the frame rate falls off.</p>
+        <p>Each channel draws its own boxes (car, truck, confidence&nbsp;%) and prints its own FPS. Tap a recording to play it in a popup.</p>
+
+        <button type="button" class="yolo-thumb" data-src="media/one-yolo-coreml-1.mp4"
+            style="background-image:url('media/one-yolo-coreml-1.jpg')"
+            aria-label="Play screen recording 1: six-channel grid"
+            onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.src=this.getAttribute('data-src');m.style.display='flex';document.body.style.overflow='hidden';var p=v.play();if(p&&p.catch)p.catch(function(){});">
+            <span class="yolo-play"></span>
+            <span class="yolo-meta">6-way &middot; ~54 FPS/ch &middot; 0:09</span>
+        </button>
+        <p class="caption">1 &mdash; Six streams, one model. Every channel holds ~54&nbsp;FPS.</p>
+
+        <button type="button" class="yolo-thumb" data-src="media/one-yolo-coreml-2.mp4"
+            style="background-image:url('media/one-yolo-coreml-2.jpg')"
+            aria-label="Play screen recording 2: six-channel grid, second drive"
+            onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.src=this.getAttribute('data-src');m.style.display='flex';document.body.style.overflow='hidden';var p=v.play();if(p&&p.catch)p.catch(function(){});">
+            <span class="yolo-play"></span>
+            <span class="yolo-meta">6-way &middot; ~53 FPS/ch &middot; 0:13</span>
+        </button>
+        <p class="caption">2 &mdash; Same six-up layout on another drive; detections hold through motion blur and lens flare.</p>
+
+        <button type="button" class="yolo-thumb wide" data-src="media/one-yolo-coreml-3.mp4"
+            style="background-image:url('media/one-yolo-coreml-3.jpg')"
+            aria-label="Play screen recording 3: eight-channel grid"
+            onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.src=this.getAttribute('data-src');m.style.display='flex';document.body.style.overflow='hidden';var p=v.play();if(p&&p.catch)p.catch(function(){});">
+            <span class="yolo-play"></span>
+            <span class="yolo-meta">8-way &middot; ~44 FPS/ch &middot; 1:22</span>
+        </button>
+        <p class="caption">3 &mdash; Pushed to eight channels: throughput settles around ~44&nbsp;FPS but every feed stays live.</p>
+
+        <p>Takeaway: a single CoreML YOLO instance scales further than expected &mdash; six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>
+
+        <div id="yoloModal" class="yolo-modal"
+            onclick="if(event.target===this){var v=document.getElementById('yoloVideo');v.pause();v.removeAttribute('src');v.load();this.style.display='none';document.body.style.overflow='';}">
+            <div class="yolo-modal-inner">
+                <button type="button" class="yolo-close" aria-label="Close video"
+                    onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.pause();v.removeAttribute('src');v.load();m.style.display='none';document.body.style.overflow='';">&times;</button>
+                <video id="yoloVideo" controls playsinline preload="none"></video>
+            </div>
+        </div>
+    </article>
+</div>
+
+<div class="blog_pager">
+    <nav class="row">
+        <span class="slot"><a href="?view=blog/blog_00001.html" data-middle="blog/blog_00001.html">&larr; Newer Post</a></span>
+        <span class="slot center"><a href="?view=blog.html" data-middle="blog.html" class="allposts">All Posts</a></span>
+        <span class="slot right">&nbsp;</span>
+    </nav>
+</div>

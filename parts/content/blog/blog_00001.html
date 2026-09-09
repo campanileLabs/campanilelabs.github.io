@@ -1,0 +1,105 @@
+<style>
+    .blogpost { width: 100%; box-sizing: border-box; }
+    .blogpost .post_card {
+        background-color: #bbbbbb; color: #000000; border-radius: 15px;
+        padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blogpost .tag {
+        display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
+        font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+        padding: 3px 10px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .blogpost .head {
+        display: flex; align-items: baseline; justify-content: space-between;
+        flex-wrap: wrap; gap: 8px; margin-bottom: 6px;
+    }
+    .blogpost h2 { font-size: 22px; margin: 0; color: #000000; }
+    .blogpost .date { font-size: 14px; color: #333333; white-space: nowrap; }
+    .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #000000; }
+    .blogpost .media {
+        width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 6px; background-color: #999999;
+    }
+    .blogpost .media img, .blogpost .media video {
+        display: block; width: 100%; height: auto;
+    }
+    .blogpost .media audio { display: block; width: 100%; padding: 14px; box-sizing: border-box; background-color: #999999; }
+    .blogpost .caption { font-size: 13px; color: #333333; font-style: italic; margin: 6px 0 18px 0; }
+
+    /* pager is its own block, decoupled from the post card */
+    .blog_pager {
+        width: 100%; box-sizing: border-box;
+        background-color: #cfcfcf; color: #000000;
+        border-radius: 15px; padding: 14px 16px; margin-top: 14px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blog_pager .row {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .blog_pager .row a {
+        background-color: #f31010; color: #ffffff; font-weight: bold; text-decoration: none;
+        padding: 10px 16px; border-radius: 10px; font-size: 14px; white-space: nowrap;
+    }
+    .blog_pager .row a:hover { background-color: #c20d0d; }
+    .blog_pager .row a.allposts { background-color: #7a7a7a; }
+    .blog_pager .row .slot { flex: 1; }
+    .blog_pager .row .slot.right { text-align: right; }
+    .blog_pager .row .slot.center { text-align: center; flex: 0 0 auto; }
+</style>
+
+<div class="blogpost">
+    <article class="post_card">
+        <span class="tag">playful Veo</span>
+        <div class="head">
+            <h2>A first look at the playful Veo interface</h2>
+            <span class="date">September 7, 2026</span>
+        </div>
+
+        <p>Here&#39;s where playful Veo stands today. The whole screen is one drop target &mdash; a stage curtain, a ring of comedy-and-tragedy masks, and a single <strong>Open Video File</strong> button. Drop a clip and it starts playing straight away.</p>
+        <p>The point of the app is play: while a video runs you can throw a stack of real-time filters at it &mdash; mosaic, hex heat-map, chromatic glitch, halftone, shuffled-tile, edge trace &mdash; scrub around, and pull frames you like. Here&#39;s the full sweep, applied to <em>Poet Anderson: The Dream Walker</em>.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-1.png" alt="playful Veo landing screen: theatre curtain, a ring of comedy and tragedy masks, and an Open Video File button">
+        </div>
+        <p class="caption">1 &mdash; The landing screen. The whole window is a drop zone.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-2.png" alt="playful Veo playing a video with a square mosaic / pixel-grid filter applied to the frame">
+        </div>
+        <p class="caption">2 &mdash; Pixelated edge effect, mid-playback at 5:08.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-3.png" alt="playful Veo frame rendered as a fiery hexagonal heat-map grid">
+        </div>
+        <p class="caption">3 &mdash; Hexagon effect &mdash; the frame resampled onto a honeycomb.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-4.png" alt="playful Veo frame with a chromatic-aberration VHS glitch filter">
+        </div>
+        <p class="caption">4 &mdash; VHS glitch effect, VHS-style colour split and scanlines.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-5.png" alt="playful Veo frame rendered as a blue halftone dot-matrix, a face emerging from the dots">
+        </div>
+        <p class="caption">5 &mdash; Pixelated circle effect &mdash; the image rebuilt from a dot grid.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-6.png" alt="playful Veo frame broken into offset shuffled tiles">
+        </div>
+        <p class="caption">6 &mdash; Shuffled tiles effect &mdash; the frame sliced and nudged out of alignment.</p>
+
+        <div class="media">
+            <img src="media/playful-veo-screenshot-7.png" alt="playful Veo frame rendered as glowing neon edge-detection outlines over a dark cityscape">
+        </div>
+        <p class="caption">7 &mdash; Edge trace effect &mdash; everything reduced to glowing outlines.</p>
+
+        <p>All seven run live at 100% speed, so you can flip between looks while the clip plays and grab whichever frame lands. More on the export path in the next post.</p>
+    </article>
+</div>
+
+<div class="blog_pager">
+    <nav class="row">
+        <span class="slot"><a href="?view=blog/blog_00003.html" data-middle="blog/blog_00003.html">&larr; Newer Post</a></span>
+        <span class="slot center"><a href="?view=blog.html" data-middle="blog.html" class="allposts">All Posts</a></span>
+        <span class="slot right"><a href="?view=blog/blog_00002.html" data-middle="blog/blog_00002.html">Older Post &rarr;</a></span>
+    </nav>
+</div>

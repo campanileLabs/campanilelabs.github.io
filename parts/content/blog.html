@@ -1,0 +1,81 @@
+<style>
+    .blog { width: 100%; box-sizing: border-box; }
+    .blog > h1 { font-size: 28px; margin: 0 0 6px 0; color: #000000; }
+    .blog > .intro { font-size: 15px; color: #333333; margin: 0 0 18px 0; }
+    .blog_list {
+        background-color: #bbbbbb; color: #000000; border-radius: 15px;
+        padding: 8px 20px; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .blog_list_item {
+        display: flex; align-items: center; gap: 14px;
+        border-bottom: 1px solid #a8a8a8; padding: 14px 0;
+    }
+    .blog_list_item:last-child { border-bottom: none; }
+    .blog_list_item .thumb {
+        flex: 0 0 auto; width: 120px; height: 72px;
+        border-radius: 8px; overflow: hidden; background-color: #999999;
+    }
+    .blog_list_item .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .blog_list_item .body { flex: 1; min-width: 0; }
+    .blog_list_item .date { display: block; font-size: 13px; color: #333333; margin-bottom: 4px; }
+    .blog_list_item a.title {
+        font-size: 18px; font-weight: bold; color: #000000; text-decoration: none;
+    }
+    .blog_list_item a.title:hover { color: #f31010; }
+    .blog_list_item .tag {
+        display: inline-block; background-color: #f31010; color: #ffffff; font-weight: bold;
+        font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+        padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle;
+    }
+    @media (max-width: 480px) {
+        .blog_list_item { flex-direction: column; align-items: stretch; gap: 10px; }
+        .blog_list_item .thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+    }
+</style>
+
+<div class="blog">
+    <h1>Blog</h1>
+    <!-- <p class="intro">Notes from the workshop &mdash; newest first.</p> -->
+    <div class="blog_list">
+        <div class="blog_list_item">
+            <span class="thumb">
+                <img src="media/audioforma-early-look.jpg" alt="Audioforma spectrum-bar audio visualization">
+            </span>
+            <span class="body">
+                <span class="date">September 9, 2026</span>
+                <a class="title" href="?view=blog/blog_00004.html" data-middle="blog/blog_00004.html">An early look at Audioforma</a>
+                <span class="tag">Audioforma</span>
+            </span>
+        </div>
+        <div class="blog_list_item">
+            <span class="thumb">
+                <img src="media/haiku-os-2.jpg" alt="Haiku OS desktop running in qemu">
+            </span>
+            <span class="body">
+                <span class="date">September 8, 2026</span>
+                <a class="title" href="?view=blog/blog_00003.html" data-middle="blog/blog_00003.html">Haiku OS launches like a rocket on qemu and on my Mac</a>
+                <span class="tag">Haiku OS</span>
+            </span>
+        </div>
+        <div class="blog_list_item">
+            <span class="thumb">
+                <img src="media/playful-veo-screenshot-1.png" alt="playful Veo landing screen">
+            </span>
+            <span class="body">
+                <span class="date">September 7, 2026</span>
+                <a class="title" href="?view=blog/blog_00001.html" data-middle="blog/blog_00001.html">A first look at the playful Veo interface</a>
+                <span class="tag">playful Veo</span>
+            </span>
+        </div>
+        <div class="blog_list_item">
+            <span class="thumb">
+                <img src="media/one-yolo-coreml-1.jpg" alt="one-yolo-coreml six-channel detection grid">
+            </span>
+            <span class="body">
+                <span class="date">September 7, 2026</span>
+                <a class="title" href="?view=blog/blog_00002.html" data-middle="blog/blog_00002.html">one-yolo-coreml: fanning a single CoreML model across many feeds</a>
+                <span class="tag">one-yolo-coreml</span>
+            </span>
+        </div>
+    </div>
+</div>

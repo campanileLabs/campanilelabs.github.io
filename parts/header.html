@@ -1,0 +1,116 @@
+<style>
+    .div_top {
+        color: white;
+        background-color: #f31010;
+        margin: 50px 0 100px 0;
+        padding: 10px 40px;
+        font-size: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+    .div_top_brand {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        padding-left: 160px;
+    }
+    .div_top_logo {
+        position: absolute;
+        left: 100px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 93.5px;
+        height: 125px;
+        pointer-events: none;
+    }
+    .div_top_menu {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+    }
+    .div_top_menu li {
+        background: none;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        font-size: 16px;
+        position: relative;
+    }
+    .div_top_menu li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background 0.2s;
+        display: block;
+    }
+    .div_top_menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Dropdown */
+    .div_top_menu li .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #c20d0d;
+        border-radius: 8px;
+        min-width: 160px;
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+        z-index: 100;
+    }
+    .div_top_menu li:hover .dropdown {
+        display: block;
+    }
+    .div_top_menu li .dropdown li {
+        font-size: 15px;
+        width: 100%;
+    }
+    .div_top_menu li .dropdown li a {
+        border-radius: 0;
+        padding: 8px 16px;
+        white-space: nowrap;
+    }
+    .div_top_menu li .dropdown li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+
+<header class="div_top">
+    <a href="/" class="div_top_brand">
+        <img src="/img/topbar_campanileLabs_wb.png" alt="campanile Labs" class="div_top_logo">
+        campanile Labs
+    </a>
+    <nav>
+    <ul class="div_top_menu">
+        <li>
+            <a href="/apps.html">Apps</a>
+            <ul class="dropdown">
+                <li><a href="/apps/audioforma.html">Audioforma</a></li>
+                <li><a href="/apps/sonidodiseno.html">sonido Diseno</a></li>
+                <li><a href="/apps/imagen.html">Imagen</a></li>
+                <li><a href="/apps/playfulVeo.html">playful Veo</a></li>
+                <li><a href="/apps/revid.html">reVid</a></li>
+            </ul>
+        </li>
+        <li><a href="/oss.html">Opensource</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/about.html">About</a></li>
+    </ul>
+    </nav>
+</header>
