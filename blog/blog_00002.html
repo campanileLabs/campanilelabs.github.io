@@ -304,7 +304,7 @@
                     </button>
                     <p class="caption">3 &mdash; Pushed to eight channels: throughput settles around ~44&nbsp;FPS but every feed stays live.</p>
 
-                    <p>Takeaway: a single CoreML native YOLO on Mac instance scales further than expected &mdash; six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>
+                    <p>Takeaway: a single CoreML YOLO instance scales further than expected &mdash; six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>
 
                     <div id="yoloModal" class="yolo-modal"
                         onclick="if(event.target===this){var v=document.getElementById('yoloVideo');v.pause();v.removeAttribute('src');v.load();this.style.display='none';document.body.style.overflow='';}">

@@ -190,6 +190,16 @@ PAGES = {
     {"@context":"https://schema.org","@type":"BlogPosting","headline":"Haiku OS launches like a rocket on qemu and on my Mac","datePublished":"2026-09-08","dateModified":"2026-09-08","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"%s/media/haiku-os-2.jpg","mainEntityOfPage":"%s/blog/blog_00003.html"}
     </script>''' % (BASE_URL, BASE_URL),
     ),
+    "blog/blog_00004.html": dict(
+        src="blog/blog_00004.html",
+        title="An early look at Audioforma — campanile Labs",
+        description="An early look at Audioforma, an audio-visualization and video-generation app built from open-source libraries with the help of Claude AI: audio in, a reactive animated scene, video out.",
+        og_type="article",
+        og_image=BASE_URL + "/media/audioforma-early-look.jpg",
+        extra_head='''    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"An early look at Audioforma","datePublished":"2026-09-09","dateModified":"2026-09-09","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"%s/media/audioforma-early-look.jpg","mainEntityOfPage":"%s/blog/blog_00004.html","video":{"@type":"VideoObject","name":"Audioforma, early look","description":"Audioforma turning a track into a reactive spectrum-and-waveform scene and rendering it to video.","thumbnailUrl":"%s/media/audioforma-early-look.jpg","contentUrl":"%s/media/audioforma-early-look.mp4","uploadDate":"2026-09-09","duration":"PT3M26S"}}
+    </script>''' % (BASE_URL, BASE_URL, BASE_URL, BASE_URL),
+    ),
 }
 
 # Extra URLs for the sitemap that aren't built here (hand-maintained).
