@@ -230,6 +230,15 @@
                     padding: 3px 8px; border-radius: 999px;
                 }
 
+                /* embedded YouTube videos */
+                .blogpost .media {
+                    position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px;
+                    overflow: hidden; margin: 0 0 10px 0; background-color: #000000;
+                }
+                .blogpost .media iframe {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+                }
+
                 /* in-page popup */
                 .yolo-modal {
                     display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -289,22 +298,14 @@
                     </button>
                     <p class="caption">1 &mdash; Six streams, one model. Every channel holds ~54&nbsp;FPS.</p>
 
-                    <button type="button" class="yolo-thumb" data-src="/media/one-yolo-coreml-2.mp4"
-                        style="background-image:url('/media/one-yolo-coreml-2.jpg')"
-                        aria-label="Play screen recording 2: six-channel grid, second drive"
-                        onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.src=this.getAttribute('data-src');m.style.display='flex';document.body.style.overflow='hidden';var p=v.play();if(p&&p.catch)p.catch(function(){});">
-                        <span class="yolo-play"></span>
-                        <span class="yolo-meta">6-way &middot; ~53 FPS/ch &middot; 0:13</span>
-                    </button>
-                    <p class="caption">2 &mdash; Same six-up layout on another drive; detections hold through motion blur and lens flare.</p>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/HlWMLKgw07I" title="one-yolo-coreml recording 2: six-channel grid, second drive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p class="caption">2 &mdash; Same six-up layout on another drive.</p>
 
-                    <button type="button" class="yolo-thumb wide" data-src="/media/one-yolo-coreml-3.mp4"
-                        style="background-image:url('/media/one-yolo-coreml-3.jpg')"
-                        aria-label="Play screen recording 3: eight-channel grid"
-                        onclick="var v=document.getElementById('yoloVideo'),m=document.getElementById('yoloModal');v.src=this.getAttribute('data-src');m.style.display='flex';document.body.style.overflow='hidden';var p=v.play();if(p&&p.catch)p.catch(function(){});">
-                        <span class="yolo-play"></span>
-                        <span class="yolo-meta">8-way &middot; ~44 FPS/ch &middot; 1:22</span>
-                    </button>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/ZRgJsw2IMTM" title="one-yolo-coreml recording 3: eight-channel grid" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                     <p class="caption">3 &mdash; Pushed to eight channels: throughput settles around ~44&nbsp;FPS but every feed stays live.</p>
 
                     <p>Takeaway: a single CoreML YOLO instance scales further than expected &mdash; six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>

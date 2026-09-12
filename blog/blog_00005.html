@@ -17,25 +17,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>An early look at Audioforma — campanile Labs</title>
-    <meta name="description" content="An early look at Audioforma, an audio-visualization and video-generation app built from open-source libraries with the help of Claude AI: audio in, a reactive animated scene, video out.">
-    <meta name="keywords" content="campanile Labs, multimedia software, video, audio, image, macOS apps, open source, Edsel Malasig">
+    <title>Imagen, early look — campanile Labs</title>
+    <meta name="description" content="An early look with a few features of Imagen, an image creator and editor. Dear ImGui is really kicking it — customizable, efficient and fast.">
+    <meta name="keywords" content="campanile Labs, multimedia software, video, audio, image, macOS apps, open source, Edsel Malasig, Imagen, Dear ImGui, image editor, image creator">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00004.html">
+    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00005.html">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="An early look at Audioforma — campanile Labs">
-    <meta property="og:description" content="An early look at Audioforma, an audio-visualization and video-generation app built from open-source libraries with the help of Claude AI: audio in, a reactive animated scene, video out.">
-    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00004.html">
-    <meta property="og:image" content="https://www.campanilelabs.com/media/audioforma-early-look.jpg">
+    <meta property="og:title" content="Imagen, early look — campanile Labs">
+    <meta property="og:description" content="An early look with a few features of Imagen, an image creator and editor. Dear ImGui is really kicking it — customizable, efficient and fast.">
+    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00005.html">
+    <meta property="og:image" content="https://img.youtube.com/vi/sqS9ZgzB1TE/maxresdefault.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="An early look at Audioforma — campanile Labs">
-    <meta name="twitter:description" content="An early look at Audioforma, an audio-visualization and video-generation app built from open-source libraries with the help of Claude AI: audio in, a reactive animated scene, video out.">
-    <meta name="twitter:image" content="https://www.campanilelabs.com/media/audioforma-early-look.jpg">
+    <meta name="twitter:title" content="Imagen, early look — campanile Labs">
+    <meta name="twitter:description" content="An early look with a few features of Imagen, an image creator and editor. Dear ImGui is really kicking it — customizable, efficient and fast.">
+    <meta name="twitter:image" content="https://img.youtube.com/vi/sqS9ZgzB1TE/maxresdefault.jpg">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BlogPosting","headline":"An early look at Audioforma","datePublished":"2026-09-09","dateModified":"2026-09-09","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://www.campanilelabs.com/media/audioforma-early-look.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00004.html","video":{"@type":"VideoObject","name":"Audioforma, early look","description":"Audioforma turning a track into a reactive spectrum-and-waveform scene and rendering it to video.","thumbnailUrl":"https://www.campanilelabs.com/media/audioforma-early-look.jpg","contentUrl":"https://www.campanilelabs.com/media/audioforma-early-look.mp4","uploadDate":"2026-09-09","duration":"PT3M26S"}}
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Imagen, early look","datePublished":"2026-09-12","dateModified":"2026-09-12","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://img.youtube.com/vi/sqS9ZgzB1TE/maxresdefault.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00005.html","video":{"@type":"VideoObject","name":"Imagen, early look","description":"An early look with a few features of Imagen, an image creator and editor.","thumbnailUrl":"https://img.youtube.com/vi/sqS9ZgzB1TE/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/sqS9ZgzB1TE","uploadDate":"2026-09-12"}}
     </script>
     <style>
     body { font-family: Arial, sans-serif; margin: 20px; background-color: #0c0b06; color: #ffffff; }
@@ -201,9 +201,12 @@
                 .blogpost .date { font-size: 14px; color: #ffffff; white-space: nowrap; }
                 .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #ffffff; }
                 .blogpost .media {
-                    width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 6px; background-color: #999999;
+                    position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px;
+                    overflow: hidden; margin-bottom: 6px; background-color: #999999;
                 }
-                .blogpost .media video { display: block; width: 100%; height: auto; }
+                .blogpost .media iframe {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+                }
                 .blogpost .caption { font-size: 13px; color: #ffffff; font-style: italic; margin: 6px 0 18px 0; }
 
                 /* pager is its own block, decoupled from the post card */
@@ -229,31 +232,26 @@
 
             <div class="blogpost">
                 <article class="post_card">
-                    <span class="tag">Audioforma</span>
+                    <span class="tag">Imagen</span>
                     <div class="head">
-                        <h2>An early look at Audioforma</h2>
-                        <span class="date">September 9, 2026</span>
+                        <h2>Imagen, early look</h2>
+                        <span class="date">September 12, 2026</span>
                     </div>
 
-                    <p>An early look at <strong>Audioforma</strong> &mdash; an audio-visualization and video-generation app I built from open-source libraries with the help of Claude AI. Feed it a track and it draws a reactive scene &mdash; spectrum bars, layered waveforms, a particle burst that breathes with the beat &mdash; then renders the whole thing out to a video file.</p>
+                    <p>This is an early look with a few features of <strong>Imagen</strong>, an image creator and editor. Dear ImGui is really kicking it &mdash; it is so customizable, efficient and fast. Have a good one!</p>
 
                     <div class="media">
-                        <video controls playsinline preload="metadata" poster="/media/audioforma-early-look.jpg">
-                            <source src="/media/audioforma-early-look.mp4" type="video/mp4">
-                            Your browser can&#39;t play this video.
-                        </video>
+                        <iframe src="https://www.youtube.com/embed/sqS9ZgzB1TE" title="Imagen, early look" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">Audioforma, early look &mdash; blink-182, &ldquo;After Midnight&rdquo; driving the visuals.</p>
-
-                    <p>It is still rough &mdash; the layout, colours and reactivity are all placeholders I am iterating on &mdash; but the pipeline works end to end: audio in, animated scene, video out. More on the render path and the presets in a later post.</p>
+                    <p class="caption">Imagen, early look &mdash; a first pass at the image creator and editor.</p>
                 </article>
             </div>
 
             <div class="blog_pager">
                 <nav class="row">
-                    <span class="slot"><a href="/blog/blog_00005.html">&larr; Newer Post</a></span>
+                    <span class="slot"><a href="/blog/blog_00006.html">&larr; Newer Post</a></span>
                     <span class="slot center"><a href="/blog.html" class="allposts">All Posts</a></span>
-                    <span class="slot right"><a href="/blog/blog_00003.html">Older Post &rarr;</a></span>
+                    <span class="slot right"><a href="/blog/blog_00004.html">Older Post &rarr;</a></span>
                 </nav>
             </div>
         </main>

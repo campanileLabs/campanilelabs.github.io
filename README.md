@@ -27,6 +27,8 @@ build feature-rich apps for video, audio, and image.
 
 ## Latest from the blog
 
+- [sonido Diseno, early look](https://www.campanilelabs.com/blog/blog_00006.html)
+- [Imagen, early look](https://www.campanilelabs.com/blog/blog_00005.html)
 - [An early look at Audioforma](https://www.campanilelabs.com/blog/blog_00004.html)
 - [Haiku OS light as a feather and launches like a rocket on qemu and on my Mac](https://www.campanilelabs.com/blog/blog_00003.html)
 - [A first look at the playful Veo interface](https://www.campanilelabs.com/blog/blog_00001.html)
