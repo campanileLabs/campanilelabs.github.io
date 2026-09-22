@@ -5,11 +5,11 @@
 
 # campanile Labs
 
-> Featureful apps for video, sound &amp; image
+> Featureful apps for video, audio &amp; images
 
 An experimental multimedia software lab based in California. I weave open-source
 libraries together with my own code, interface design, and artistic detail to
-build feature-rich apps for video, audio, and image.
+build feature-rich apps for video, audio, and images.
 
 ---
 
