@@ -27,7 +27,7 @@ build feature-rich apps for video, audio, and image.
 
 ## Latest from the blog
 
-- [Impressed and at the same time disappointed with GLFW and nanogui](https://www.campanilelabs.com/blog/blog_00007.html)
+- [Impressed and at the same time disappointed with nanogui on GLFW](https://www.campanilelabs.com/blog/blog_00007.html)
 - [sonido Diseno, early look](https://www.campanilelabs.com/blog/blog_00006.html)
 - [Imagen, early look](https://www.campanilelabs.com/blog/blog_00005.html)
 - [An early look at Audioforma](https://www.campanilelabs.com/blog/blog_00004.html)
