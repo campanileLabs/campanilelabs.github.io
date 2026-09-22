@@ -17,25 +17,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>sonido Diseno, early look — campanile Labs</title>
-    <meta name="description" content="An early look at sonido Diseno, an audio editor growing into a full advanced audio suite, built on FFmpeg with a 3D-accelerated GUI.">
-    <meta name="keywords" content="campanile Labs, multimedia software, video, audio, image, macOS apps, open source, Edsel Malasig, sonido Diseno, FFmpeg, audio editor">
+    <title>Impressed and at the same time disappointed with GLFW and nanogui — campanile Labs</title>
+    <meta name="description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <meta name="keywords" content="campanile Labs, GLFW, nanogui, screen tearing, Metal backend, Vulkan backend, macOS apps, open source, Edsel Malasig, 3D-accelerated GUI">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00006.html">
+    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00007.html">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="sonido Diseno, early look — campanile Labs">
-    <meta property="og:description" content="An early look at sonido Diseno, an audio editor growing into a full advanced audio suite, built on FFmpeg with a 3D-accelerated GUI.">
-    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00006.html">
-    <meta property="og:image" content="https://img.youtube.com/vi/-6iATfXAYMo/maxresdefault.jpg">
+    <meta property="og:title" content="Impressed and at the same time disappointed with GLFW and nanogui — campanile Labs">
+    <meta property="og:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00007.html">
+    <meta property="og:image" content="https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="sonido Diseno, early look — campanile Labs">
-    <meta name="twitter:description" content="An early look at sonido Diseno, an audio editor growing into a full advanced audio suite, built on FFmpeg with a 3D-accelerated GUI.">
-    <meta name="twitter:image" content="https://img.youtube.com/vi/-6iATfXAYMo/maxresdefault.jpg">
+    <meta name="twitter:title" content="Impressed and at the same time disappointed with GLFW and nanogui — campanile Labs">
+    <meta name="twitter:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <meta name="twitter:image" content="https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BlogPosting","headline":"sonido Diseno, early look","datePublished":"2026-09-12","dateModified":"2026-09-12","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://img.youtube.com/vi/-6iATfXAYMo/maxresdefault.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00006.html","video":{"@type":"VideoObject","name":"sonido Diseno, early look","description":"An early look at sonido Diseno, an audio editor growing into a full advanced audio suite.","thumbnailUrl":"https://img.youtube.com/vi/-6iATfXAYMo/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/-6iATfXAYMo","uploadDate":"2026-09-12"}}
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Impressed and at the same time disappointed with GLFW and nanogui","datePublished":"2026-09-22","dateModified":"2026-09-22","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00007.html","video":[{"@type":"VideoObject","name":"Minor screen tearing on Metal backend, nanogui over GLFW3","description":"Minor screen tearing on the Metal backend, nanogui over GLFW3.","thumbnailUrl":"https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/lvnDDdLCyJY","uploadDate":"2026-09-22"},{"@type":"VideoObject","name":"Major screen tearing on Vulkan backend, nanogui over GLFW3","description":"Major screen tearing on the Vulkan backend, nanogui over GLFW3.","thumbnailUrl":"https://img.youtube.com/vi/2lbv-ArB8nA/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/2lbv-ArB8nA","uploadDate":"2026-09-22"}]}
     </script>
     <style>
     body { font-family: Arial, sans-serif; margin: 20px; background-color: #0c0b06; color: #ffffff; }
@@ -200,6 +200,7 @@
                 .blogpost h2 { font-size: 22px; margin: 0; color: #ffffff; }
                 .blogpost .date { font-size: 14px; color: #ffffff; white-space: nowrap; }
                 .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #ffffff; }
+                .blogpost h3 { font-size: 18px; margin: 22px 0 10px 0; color: #ffffff; }
                 .blogpost .media {
                     position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px;
                     overflow: hidden; margin-bottom: 6px; background-color: #999999;
@@ -232,18 +233,31 @@
 
             <div class="blogpost">
                 <article class="post_card">
-                    <span class="tag">sonido Diseno</span>
+                    <span class="tag">GLFW &amp; nanogui</span>
                     <div class="head">
-                        <h2>sonido Diseno, early look</h2>
-                        <span class="date">September 12, 2026</span>
+                        <h2>Impressed and at the same time disappointed with GLFW and nanogui</h2>
+                        <span class="date">September 22, 2026</span>
                     </div>
 
-                    <p>Here is an early look at another app I am making, <strong>sonido Diseno</strong>. It started life as an audio editor, and I am now growing it into a full advanced audio suite. Under the hood it runs on FFmpeg for the audio pipeline, with a 3D-accelerated GUI on top.</p>
+                    <p>I have been building the 3D-accelerated GUIs across a few of my apps on top of <strong>GLFW</strong> and <strong>nanogui</strong>, and on the whole they have been a pleasure to work with &mdash; lightweight, cross-platform, and easy to reason about. But the more backends I push them through, the more one problem keeps following me around: screen tearing. It shows up differently depending on the backend, and on one of them it is bad enough that I cannot ship with it as-is.</p>
 
+                    <h3>Metal backend &mdash; minor tearing</h3>
                     <div class="media">
-                        <iframe src="https://www.youtube.com/embed/-6iATfXAYMo" title="sonido Diseno, early look" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/lvnDDdLCyJY" title="Minor screen tearing on Metal backend, nanogui over GLFW3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">sonido Diseno, early look &mdash; FFmpeg under the hood, a 3D-accelerated GUI on top.</p>
+                    <p class="caption">nanogui over GLFW3, Metal backend &mdash; minor screen tearing.</p>
+
+                    <p>On Metal the tearing is subtle. You have to be looking for it, and during normal fast-moving content it is easy to miss entirely. It is the kind of thing I can live with while I keep iterating.</p>
+
+                    <h3>Vulkan backend &mdash; major tearing</h3>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/2lbv-ArB8nA" title="Major screen tearing on Vulkan backend, nanogui over GLFW3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p class="caption">nanogui over GLFW3, Vulkan backend &mdash; major screen tearing.</p>
+
+                    <p>On Vulkan it is a different story. The tearing is obvious and distracting, right there during ordinary interaction. Something in how swap intervals and presentation are being handled on this backend is not behaving the way I would expect, and it is the part of this stack I am least happy with right now.</p>
+
+                    <p>So, impressed by how far GLFW and nanogui get me with so little friction, and disappointed that presentation on the Vulkan side still needs real work before I would call it production-ready. I will keep digging into swap chain and vsync settings and report back once I have something more solid.</p>
 
                     <p>Thank you so much for viewing, and have a good one as always!</p>
                 </article>
@@ -251,9 +265,9 @@
 
             <div class="blog_pager">
                 <nav class="row">
-                    <span class="slot"><a href="/blog/blog_00007.html">&larr; Newer Post</a></span>
+                    <span class="slot">&nbsp;</span>
                     <span class="slot center"><a href="/blog.html" class="allposts">All Posts</a></span>
-                    <span class="slot right"><a href="/blog/blog_00005.html">Older Post &rarr;</a></span>
+                    <span class="slot right"><a href="/blog/blog_00006.html">Older Post &rarr;</a></span>
                 </nav>
             </div>
         </main>
