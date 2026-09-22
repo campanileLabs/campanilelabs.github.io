@@ -5,7 +5,7 @@
 
 # campanile Labs
 
-> Small apps for video, sound &amp; image
+> Featureful apps for video, sound &amp; image
 
 An experimental multimedia software lab based in California. I weave open-source
 libraries together with my own code, interface design, and artistic detail to
