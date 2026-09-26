@@ -17,8 +17,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Impressed and at the same time disappointed with nanogui on GLFW — campanile Labs</title>
-    <meta name="description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <title>Impressed and at the same time disappointed with nanogui on GLFW - campanile Labs</title>
+    <meta name="description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends - minor on Metal, major on Vulkan.">
     <meta name="keywords" content="campanile Labs, GLFW, nanogui, screen tearing, Metal backend, Vulkan backend, macOS apps, open source, Edsel Malasig, 3D-accelerated GUI">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -26,13 +26,13 @@
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="Impressed and at the same time disappointed with nanogui on GLFW — campanile Labs">
-    <meta property="og:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <meta property="og:title" content="Impressed and at the same time disappointed with nanogui on GLFW - campanile Labs">
+    <meta property="og:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends - minor on Metal, major on Vulkan.">
     <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00007.html">
     <meta property="og:image" content="https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Impressed and at the same time disappointed with nanogui on GLFW — campanile Labs">
-    <meta name="twitter:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends &mdash; minor on Metal, major on Vulkan.">
+    <meta name="twitter:title" content="Impressed and at the same time disappointed with nanogui on GLFW - campanile Labs">
+    <meta name="twitter:description" content="GLFW and nanogui are a joy to build with, but screen tearing shows up on both the Metal and Vulkan backends - minor on Metal, major on Vulkan.">
     <meta name="twitter:image" content="https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BlogPosting","headline":"Impressed and at the same time disappointed with nanogui on GLFW","datePublished":"2026-09-22","dateModified":"2026-09-22","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00007.html","video":[{"@type":"VideoObject","name":"Minor screen tearing on Metal backend, nanogui over GLFW3","description":"Minor screen tearing on the Metal backend, nanogui over GLFW3.","thumbnailUrl":"https://img.youtube.com/vi/lvnDDdLCyJY/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/lvnDDdLCyJY","uploadDate":"2026-09-22"},{"@type":"VideoObject","name":"Major screen tearing on Vulkan backend, nanogui over GLFW3","description":"Major screen tearing on the Vulkan backend, nanogui over GLFW3.","thumbnailUrl":"https://img.youtube.com/vi/2lbv-ArB8nA/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/2lbv-ArB8nA","uploadDate":"2026-09-22"}]}
@@ -239,21 +239,21 @@
                         <span class="date">September 22, 2026</span>
                     </div>
 
-                    <p>I have been building the 3D-accelerated GUIs across a few of my apps on top of <strong>GLFW</strong> and <strong>nanogui</strong>, and on the whole they have been a pleasure to work with &mdash; lightweight, cross-platform, and easy to reason about. But the more backends I push them through, the more one problem keeps following me around: screen tearing. It shows up differently depending on the backend, and on one of them it is bad enough that I cannot ship with it as-is.</p>
+                    <p>I have been building the 3D-accelerated GUIs across a few of my apps on top of <strong>GLFW</strong> and <strong>nanogui</strong>, and on the whole they have been a pleasure to work with - lightweight, cross-platform, and easy to reason about. But the more backends I push them through, the more one problem keeps following me around: screen tearing. It shows up differently depending on the backend, and on one of them it is bad enough that I cannot ship with it as-is.</p>
 
-                    <h3>Metal backend &mdash; minor tearing</h3>
+                    <h3>Metal backend - minor tearing</h3>
                     <div class="media">
                         <iframe src="https://www.youtube.com/embed/lvnDDdLCyJY" title="Minor screen tearing on Metal backend, nanogui over GLFW3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">nanogui over GLFW3, Metal backend &mdash; minor screen tearing.</p>
+                    <p class="caption">nanogui over GLFW3, Metal backend - minor screen tearing.</p>
 
                     <p>On Metal the tearing is subtle. You have to be looking for it, and during normal fast-moving content it is easy to miss entirely. It is the kind of thing I can live with while I keep iterating.</p>
 
-                    <h3>Vulkan backend &mdash; major tearing</h3>
+                    <h3>Vulkan backend - major tearing</h3>
                     <div class="media">
                         <iframe src="https://www.youtube.com/embed/2lbv-ArB8nA" title="Major screen tearing on Vulkan backend, nanogui over GLFW3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">nanogui over GLFW3, Vulkan backend &mdash; major screen tearing.</p>
+                    <p class="caption">nanogui over GLFW3, Vulkan backend - major screen tearing.</p>
 
                     <p>On Vulkan it is a different story. The tearing is obvious and distracting, right there during ordinary interaction. Something in how swap intervals and presentation are being handled on this backend is not behaving the way I would expect, and it is the part of this stack I am least happy with right now.</p>
 

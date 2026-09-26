@@ -40,25 +40,25 @@ build feature-rich apps for video, audio, and images.
 
 Open Source Libraries used:
 
-- **Dear ImGui** &mdash; tool panels, editors and debug overlays
-- **RtAudio** &mdash; real-time audio I/O across CoreAudio, WASAPI, ALSA and JACK
-- **PortAudio** &mdash; alternative low-latency audio capture and playback backend
-- **FFmpeg** &mdash; audio/video decode, encode, transcode, mux and filtering
-- **OpenGL** &mdash; 2D/3D graphics API, the render path on older hardware
-- **Vulkan** &mdash; low-level graphics and compute, the modern render path
-- **MoltenVK** &mdash; runs Vulkan on Apple Metal for macOS and iOS
-- **FreeType** &mdash; font loading and glyph rasterization for all in-app text
-- **zlib** &mdash; DEFLATE compression for asset packing, project files and PNG
-- **GLFW** &mdash; window creation, GL/Vulkan context setup and input
-- **GLM** &mdash; header-only C++ math (vectors, matrices, quaternions) for graphics
-- **FFTW3** &mdash; fast Fourier transforms for spectral analysis and processing
+- **Dear ImGui** - tool panels, editors and debug overlays
+- **RtAudio** - real-time audio I/O across CoreAudio, WASAPI, ALSA and JACK
+- **PortAudio** - alternative low-latency audio capture and playback backend
+- **FFmpeg** - audio/video decode, encode, transcode, mux and filtering
+- **OpenGL** - 2D/3D graphics API, the render path on older hardware
+- **Vulkan** - low-level graphics and compute, the modern render path
+- **MoltenVK** - runs Vulkan on Apple Metal for macOS and iOS
+- **FreeType** - font loading and glyph rasterization for all in-app text
+- **zlib** - DEFLATE compression for asset packing, project files and PNG
+- **GLFW** - window creation, GL/Vulkan context setup and input
+- **GLM** - header-only C++ math (vectors, matrices, quaternions) for graphics
+- **FFTW3** - fast Fourier transforms for spectral analysis and processing
 
 [Full list with licenses &rarr;](https://www.campanilelabs.com/oss.html)
 
 ## About
 
 A one-person experimental multimedia software lab in California, run by
-**Edsel Malasig** &mdash; open-source libraries woven together with custom code,
+**Edsel Malasig** - open-source libraries woven together with custom code,
 interface design and an artistic touch to create cool multimedia software.
 
 [Read more &rarr;](https://www.campanilelabs.com/about.html)

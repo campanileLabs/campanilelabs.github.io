@@ -17,8 +17,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>one-yolo-coreml: fanning a single CoreML model across many feeds — campanile Labs</title>
-    <meta name="description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon — six feeds hold ~54 FPS each, eight still clear real-time.">
+    <title>one-yolo-coreml: fanning a single CoreML model across many feeds - campanile Labs</title>
+    <meta name="description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon - six feeds hold ~54 FPS each, eight still clear real-time.">
     <meta name="keywords" content="campanile Labs, multimedia software, video, audio, image, macOS apps, open source, Edsel Malasig">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -26,13 +26,13 @@
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="one-yolo-coreml: fanning a single CoreML model across many feeds — campanile Labs">
-    <meta property="og:description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon — six feeds hold ~54 FPS each, eight still clear real-time.">
+    <meta property="og:title" content="one-yolo-coreml: fanning a single CoreML model across many feeds - campanile Labs">
+    <meta property="og:description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon - six feeds hold ~54 FPS each, eight still clear real-time.">
     <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00002.html">
     <meta property="og:image" content="https://www.campanilelabs.com/media/one-yolo-coreml-1.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="one-yolo-coreml: fanning a single CoreML model across many feeds — campanile Labs">
-    <meta name="twitter:description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon — six feeds hold ~54 FPS each, eight still clear real-time.">
+    <meta name="twitter:title" content="one-yolo-coreml: fanning a single CoreML model across many feeds - campanile Labs">
+    <meta name="twitter:description" content="A small experiment: run one YOLO detector compiled to CoreML against a wall of dashcam streams on Apple Silicon - six feeds hold ~54 FPS each, eight still clear real-time.">
     <meta name="twitter:image" content="https://www.campanilelabs.com/media/one-yolo-coreml-1.jpg">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BlogPosting","headline":"one-yolo-coreml: fanning a single CoreML model across many feeds","datePublished":"2026-09-07","dateModified":"2026-09-07","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://www.campanilelabs.com/media/one-yolo-coreml-1.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00002.html"}
@@ -286,7 +286,7 @@
                         <span class="date">September 7, 2026</span>
                     </div>
 
-                    <p>one-yolo-coreml is a small experiment: take <em>one</em> YOLO detector compiled to CoreML and run it against a wall of dashcam streams at once on Apple Silicon &mdash; no per-stream model copy, just one instance time-sliced across every channel. The question was how many feeds it holds before the frame rate falls off.</p>
+                    <p>one-yolo-coreml is a small experiment: take <em>one</em> YOLO detector compiled to CoreML and run it against a wall of dashcam streams at once on Apple Silicon - no per-stream model copy, just one instance time-sliced across every channel. The question was how many feeds it holds before the frame rate falls off.</p>
                     <p>Each channel draws its own boxes (car, truck, confidence&nbsp;%) and prints its own FPS. Tap a recording to play it in a popup.</p>
 
                     <button type="button" class="yolo-thumb" data-src="/media/one-yolo-coreml-1.mp4"
@@ -296,19 +296,19 @@
                         <span class="yolo-play"></span>
                         <span class="yolo-meta">6-way &middot; ~54 FPS/ch &middot; 0:09</span>
                     </button>
-                    <p class="caption">1 &mdash; Six streams, one model. Every channel holds ~54&nbsp;FPS.</p>
+                    <p class="caption">1 - Six streams, one model. Every channel holds ~54&nbsp;FPS.</p>
 
                     <div class="media">
                         <iframe src="https://www.youtube.com/embed/HlWMLKgw07I" title="one-yolo-coreml recording 2: six-channel grid, second drive" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">2 &mdash; Same six-up layout on another drive.</p>
+                    <p class="caption">2 - Same six-up layout on another drive.</p>
 
                     <div class="media">
                         <iframe src="https://www.youtube.com/embed/ZRgJsw2IMTM" title="one-yolo-coreml recording 3: eight-channel grid" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <p class="caption">3 &mdash; Pushed to eight channels: throughput settles around ~44&nbsp;FPS but every feed stays live.</p>
+                    <p class="caption">3 - Pushed to eight channels: throughput settles around ~44&nbsp;FPS but every feed stays live.</p>
 
-                    <p>Takeaway: a single CoreML YOLO instance scales further than expected &mdash; six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>
+                    <p>Takeaway: a single CoreML YOLO instance scales further than expected - six feeds cost almost nothing, and eight still clears real-time. Next I want to see where it breaks, and whether batching the channels into one inference call beats round-robin.</p>
 
                     <div id="yoloModal" class="yolo-modal"
                         onclick="if(event.target===this){var v=document.getElementById('yoloVideo');v.pause();v.removeAttribute('src');v.load();this.style.display='none';document.body.style.overflow='';}">
