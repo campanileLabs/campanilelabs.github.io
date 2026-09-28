@@ -27,12 +27,12 @@ build feature-rich apps for video, audio, and images.
 
 ## Latest from the blog
 
+- [libRocket - The HTML/CSS User Interface Library for metal and vulkan](https://www.campanilelabs.com/blog/blog_00008.html)
 - [Impressed and at the same time disappointed with nanogui on GLFW](https://www.campanilelabs.com/blog/blog_00007.html)
 - [sonido Diseno, early look](https://www.campanilelabs.com/blog/blog_00006.html)
 - [Imagen, early look](https://www.campanilelabs.com/blog/blog_00005.html)
 - [An early look at Audioforma](https://www.campanilelabs.com/blog/blog_00004.html)
 - [Haiku OS light as a feather and launches like a rocket on qemu and on my Mac](https://www.campanilelabs.com/blog/blog_00003.html)
-- [A first look at the playful Veo interface](https://www.campanilelabs.com/blog/blog_00001.html)
 
 [All posts &rarr;](https://www.campanilelabs.com/blog.html)
 
