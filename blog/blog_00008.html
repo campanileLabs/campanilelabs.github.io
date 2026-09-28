@@ -17,25 +17,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Haiku OS launches like a rocket on qemu and on my Mac - campanile Labs</title>
-    <meta name="description" content="Look at the size of the Haiku OS image - it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
-    <meta name="keywords" content="campanile Labs, multimedia software, video, audio, image, macOS apps, open source, Edsel Malasig">
+    <title>libRocket - The HTML/CSS User Interface Library for metal and vulkan - campanile Labs</title>
+    <meta name="description" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan">
+    <meta name="keywords" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1">
-    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00003.html">
+    <link rel="canonical" href="https://www.campanilelabs.com/blog/blog_00008.html">
 
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="campanile Labs">
-    <meta property="og:title" content="Haiku OS launches like a rocket on qemu and on my Mac - campanile Labs">
-    <meta property="og:description" content="Look at the size of the Haiku OS image - it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
-    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00003.html">
-    <meta property="og:image" content="https://www.campanilelabs.com/media/haiku-os-2.jpg">
+    <meta property="og:title" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan - campanile Labs">
+    <meta property="og:description" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan">
+    <meta property="og:url" content="https://www.campanilelabs.com/blog/blog_00008.html">
+    <meta property="og:image" content="https://img.youtube.com/vi/fMWhQ3gZUd4/maxresdefault.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Haiku OS launches like a rocket on qemu and on my Mac - campanile Labs">
-    <meta name="twitter:description" content="Look at the size of the Haiku OS image - it is tiny and still performs well. No graphics acceleration yet and emulator-only, but progress toward release is fast and it looks promising. Time to start contributing.">
-    <meta name="twitter:image" content="https://www.campanilelabs.com/media/haiku-os-2.jpg">
+    <meta name="twitter:title" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan - campanile Labs">
+    <meta name="twitter:description" content="libRocket - The HTML/CSS User Interface Library for metal and vulkan">
+    <meta name="twitter:image" content="https://img.youtube.com/vi/fMWhQ3gZUd4/maxresdefault.jpg">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Haiku OS launches like a rocket on qemu and on my Mac","datePublished":"2026-09-08","dateModified":"2026-09-08","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"image":"https://www.campanilelabs.com/media/haiku-os-2.jpg","mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00003.html"}
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"libRocket - The HTML/CSS User Interface Library for metal and vulkan","datePublished":"2026-09-28","dateModified":"2026-09-28","author":{"@type":"Person","name":"Edsel Malasig"},"publisher":{"@type":"Organization","name":"campanile Labs"},"mainEntityOfPage":"https://www.campanilelabs.com/blog/blog_00008.html","image":"https://img.youtube.com/vi/fMWhQ3gZUd4/maxresdefault.jpg","video":[{"@type":"VideoObject","name":"Interactive UI components in libRocket","description":"interactive UI components built with libRocket","thumbnailUrl":"https://img.youtube.com/vi/fMWhQ3gZUd4/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/fMWhQ3gZUd4","uploadDate":"2026-09-28"},{"@type":"VideoObject","name":"A game-project mockup built with libRocket","description":"a game project mockup built with libRocket","thumbnailUrl":"https://img.youtube.com/vi/I25xH0StjOQ/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/I25xH0StjOQ","uploadDate":"2026-09-28"},{"@type":"VideoObject","name":"This month's app ported to a libRocket mockup","description":"this month's app ported to a libRocket mockup","thumbnailUrl":"https://img.youtube.com/vi/EsKDLVJpRk0/maxresdefault.jpg","embedUrl":"https://www.youtube.com/embed/EsKDLVJpRk0","uploadDate":"2026-09-28"}]}
     </script>
     <style>
     body { font-family: Arial, sans-serif; margin: 20px; background-color: #0c0b06; color: #ffffff; }
@@ -200,11 +200,21 @@
                 .blogpost h2 { font-size: 22px; margin: 0; color: #ffffff; }
                 .blogpost .date { font-size: 14px; color: #ffffff; white-space: nowrap; }
                 .blogpost p { font-size: 16px; line-height: 1.6; margin: 0 0 14px 0; color: #ffffff; }
+                .blogpost h3 { font-size: 18px; margin: 22px 0 10px 0; color: #ffffff; }
                 .blogpost .media {
-                    width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 6px; background-color: #999999;
+                    position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px;
+                    overflow: hidden; margin-bottom: 6px; background-color: #999999;
                 }
-                .blogpost .media img { display: block; width: 100%; height: auto; }
-                .blogpost .caption { font-size: 13px; color: #ffffff; font-style: italic; text-align: center; margin: 6px 0 18px 0; }
+                .blogpost .media iframe {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+                }
+                .blogpost .media:has(img) {
+                    aspect-ratio: auto; overflow: visible; background-color: transparent;
+                }
+                .blogpost .media img {
+                    display: block; width: 100%; height: auto; border-radius: 10px;
+                }
+                .blogpost .caption { display: block; font-size: 13px; color: #ffffff; font-style: italic; text-align: center; margin: 6px 0 18px 0; }
 
                 /* pager is its own block, decoupled from the post card */
                 .blog_pager {
@@ -229,33 +239,52 @@
 
             <div class="blogpost">
                 <article class="post_card">
-                    <span class="tag">Haiku OS</span>
+                    <span class="tag">libRocket metal vulkan API</span>
                     <div class="head">
-                        <h2>Haiku OS launches like a rocket on qemu and on my Mac</h2>
-                        <span class="date">September 8, 2026</span>
+                        <h2>libRocket - The HTML/CSS User Interface Library for metal and vulkan</h2>
+                        <span class="date">September 28, 2026</span>
                     </div>
 
-                    <p>Look at the size of the files for the Haiku OS image - it sure is small, and it can still perform well. As of late there is no graphics acceleration and it only launches on an emulator, but even inside qemu on my Mac it boots to a usable desktop almost instantly.</p>
-
+                    <p>libRocket is one of the first OpenGL ui that I consider basing my projects on back in the days. I never new before screen tearing and frame buffer resize but now that I am aware of the performance of this graphics user interface on top of metal and vulkan on macOS is extremely impressive.</p>
+                    <p>First of it is not a regular image file or vector based ui it is an HTML and CSS file UI having this in mind you would think that it would consume large amounts of memory, a bottle neck to the cpu and a low frame rate.</p>
                     <div class="media">
-                        <img src="/media/haiku-os-1.jpg" alt="File listing showing the Haiku OS disk images and their sizes">
+                        <img src="/media/libRocket-load-document.png" alt="Screenshot of the libRocket load document" style="display:block;width:100%;height:auto;border-radius:10px;margin-bottom:6px">
                     </div>
-                    <p class="caption">1 - The build folder: <code>haiku-minimum.image</code> is the whole operating system.</p>
-
+                    <span class="caption">Simple load document app screen shot</span>
                     <div class="media">
-                        <img src="/media/haiku-os-2.jpg" alt="Haiku OS desktop running under qemu on macOS, with the Tracker file browser open">
+                        <img src="/media/libRocket-metal-screencap.png" alt="Screenshot of libRocket running on Metal" style="display:block;width:100%;height:auto;border-radius:10px;margin-bottom:6px">
                     </div>
-                    <p class="caption">2 - Haiku under qemu on macOS - desktop and Tracker up in seconds.</p>
-
-                    <p>A lot of huge, fast progress has been made toward the release of this operating system, and it looks promising. I think I am going to dive in and start contributing to this cause.</p>
+                    <span class="caption">on metal it runs 120 FPS</span>
+                    <p>With LLMs you can customize the ui extensively. you can also use rml, external fonts, images to design the whole user experience.</p>
+                    <div class="media">
+                        <img src="/media/libRocket-data-grid-tree.png" alt="Screenshot of the libRocket data grid tree demo" style="display:block;width:100%;height:auto;border-radius:10px;margin-bottom:6px">
+                    </div>
+                    <span class="caption">data grid tree demo.</span>
+                    <p>You can change many UI components and you can build one with the power of html and css. It is also interactive.</p>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/fMWhQ3gZUd4" title="Interactive UI components in libRocket" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <span class="caption">interactive UI components built with libRocket</span>
+                    <p>You could potentially use it for game projects or custom app.</p>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/I25xH0StjOQ" title="A game-project mockup built with libRocket" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <span class="caption">a game of Space Invaders built with libRocket</span>
+                    <p>Even the app that I built this month was able to be ported to libRocket mockup without the functionality of the app but delivers close to the user experience.</p>
+                    <div class="media">
+                        <iframe src="https://www.youtube.com/embed/EsKDLVJpRk0" title="This month's app ported to a libRocket mockup" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <span class="caption">this month's app ported to a libRocket mockup</span>
+                    <p>So if you are thinking of a new UI for games or for your application that is fast, easily customizeable and vibe coding friendly, I suggest using libRocket. I would definitely use this on my next project.</p>
+                    <p>Thanks for browsing and there are more to come.</p>
                 </article>
             </div>
 
             <div class="blog_pager">
                 <nav class="row">
-                    <span class="slot"><a href="/blog/blog_00004.html">&larr; Newer Post</a></span>
+                    <span class="slot">&nbsp;</span>
                     <span class="slot center"><a href="/blog.html" class="allposts">All Posts</a></span>
-                    <span class="slot right"><a href="/blog/blog_00001.html">Older Post &rarr;</a></span>
+                    <span class="slot right"><a href="/blog/blog_00007.html">Older Post &rarr;</a></span>
                 </nav>
             </div>
         </main>
